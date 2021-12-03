@@ -50,4 +50,11 @@ public class PromocionAxBTest {
 		double valorEsperado = minasDeTirith.getCosto() + erebor.getCosto();
 		assertEquals(valorEsperado, packPaisajes.getCosto(), 0);
 	}
+	
+	@Test 
+	public void alConstruirseCalculaElValorCorrectamentePruebaDos() {
+		double valorSinDescuentoAxB = 54;
+		double costoDeLaUltimaAtraccion = 13;
+		assertEquals((valorSinDescuentoAxB - costoDeLaUltimaAtraccion), packDegustacion.getCosto(), 0);
+	}
 }
