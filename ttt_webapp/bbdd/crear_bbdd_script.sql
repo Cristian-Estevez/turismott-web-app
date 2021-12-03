@@ -87,20 +87,84 @@ VALUES
 ("absoluta"),
 ("AxB");
 
-INSERT INTO atraccion (nombre, costo, duracion, cupo, tipo) 
+INSERT INTO atraccion (nombre, costo, duracion, cupo, tipo, descripcion, url_imagen) 
 VALUES
-("Moria", 10, 2, 6, 1),
-("Minas de Tirith", 5, 2.5, 25, 2),
-("La Comarca", 3, 6.5, 150, 3),
-("Mordor", 25, 3, 4, 1),
-("Abismo de Helm", 5, 2, 15, 2),
-("Lothlórien", 35, 1,30, 3),
-("Erebor", 12, 3, 32,2 ),
-("Bosque Negro", 3, 4, 12, 1),
-("Mar del Plata", 4, 5, 13, 3),
-("Chascomus", 5, 3, 65, 2),
-("Bolivia", 3, 2, 60, 1),
-("Chile", 7, 30, 7, 2);
+("Moria", 10, 2, 6, 1, 
+"Visitá este reino subterráneo 
+debajo de las Misty Mountains. 
+Este es el reino más antiguo y 
+famoso de los Enanos de Durin.",
+"https://i.pinimg.com/originals/22/16/6b/22166b1b7c3506049e25a7790f19aefe.jpg"),
+("Minas de Tirith", 5, 2.5, 25, 2, 
+"Vení a conocer la capital de Gondor, esta maravilla
+está encerrada por el Rammas Echor, una gran pared
+anillada que rodea los Campos del Pelennor. 
+Esta pared servía como defensa, pero ahora los
+restos nos dejan ver un pintoresco paisaje con una 
+larga historia.",
+"https://www.ecured.cu/images/5/5b/Minas_Thirit.jpg"),
+("La Comarca", 3, 6.5, 150, 3,
+"Este excelente barrio privado de hobbits te hará sentir como en casa
+Tiene más de 5 millones de hectareas donde vas
+a encontrar fiestas, alojamiento, spa y deliciosos bocados
+de la comida local.",
+"https://cdn.unitycms.io/image/ocroped/2001,2000,1000,1000,0,0/zZWiwBO-UuU/0x7dVEFLawQB9Y8dIRheNG.jpg"),
+("Mordor", 25, 3, 4, 1,
+"No te olvides del traje de baño para visitar Mordor!
+Esta región volcánica fundada por Sauron se caracterizaba
+por ser una fortaleza del mal. Ahora está lista para 
+recibirte con las mejores aventuras y las mas ricas exquisiteces
+de la zona.",
+"https://storge.pic2.me/cm/2560x1440/180/605e74fa825653.60114200.jpg"),
+("Abismo de Helm", 5, 2, 15, 2,
+"¿Que pasa cuando se abre una ventana? Aparece este
+excelente destino turistico! Abismo de Helm tiene para
+ofrecer una gran variedad de actividades familiares.
+Este paisaje pet-friendly tiene secretos que 
+podrás descubirir en las visitas guiadas...¡las 24 horas del dia!",
+"https://1.bp.blogspot.com/-sG9b4OI7R7I/WnZbKxHv6iI/AAAAAAAACjo/kKZ5IwNWyQMjXGDTsp7vCDSP0B9ZOdpRACLcBGAs/s1600/helms5.png"),
+("Lothlórien", 35, 1,30, 3, 
+"¿Estas buscando relajarte? Este reino de elfos te da la posibilidad
+de relajarte, curar tu alma y rejuvenecerte
+a un precio de locos!! ",
+"https://elvenwisdomblog.files.wordpress.com/2020/09/tim-catherall-lothlorien.jpg"),
+("Erebor", 12, 3, 32,2,
+"Recomendado por Smaug, esta montaña solitaria tiene
+siglos de historia que podrás apreciar en las visitas
+turísticas.",
+"https://ihan.signotic.com/wp-content/uploads/2017/09/cropped-Erebor_gate.jpg"),
+("Bosque Negro", 3, 4, 12, 1,
+"El Bosque Negro (Mirkwood en inglés), 
+también llamado Taur-nu-Fuin o Taur-e-Ndadelos, 
+fue un enorme bosque situado en 
+Rhovanion, al nordeste de la Tierra Media. 
+Conocido anteriormente como el Gran Bosque Verde, 
+desde la construcción de la fortaleza de Dol Guldur 
+por parte de Sauron, una gran sombra se cernió sobre el bosque, 
+pasando a llamarse Bosque Negro.",
+"https://static.wikia.nocookie.net/bibliotecadelatierramedia/images/7/7a/Bosque_Negro.jpg/revision/latest?cb=20140730114538&path-prefix=es"),
+("Mar del Plata", 4, 5, 13, 3, 
+"Mar del Plata es una ciudad balnearia argentina en la costa del Atlántico. 
+Su larga franja de playas incluye la amplia Punta Mogotes y Playa Grande, con sus rompientes para el surf. 
+Detrás de Playa Grande, las calles rodeadas de árboles del barrio Los Troncos 
+tienen elegantes casas de comienzos del siglo XX, que ahora son museos.",
+"https://radiomitre-la100-prod.cdn.arcpublishing.com/resizer/HyLlAvgOCZy7LRzbX8n8o0O_kJ4=/1200x0/smart/cloudfront-us-east-1.images.arcpublishing.com/radiomitre/YUK2ZHXEOJCYVCTBDGZYEBC4BI.jpg"),
+("Chascomus", 5, 3, 65, 2, 
+"Si uno piensa en Chascomús automáticamente piensa en su laguna. Podría pensar en la pesca, en 
+Alfonsín o en el turismo rural. Pero no, la relación es con la laguna. 
+Es que la laguna se lleva todas las miradas, sobre todo al atardecer. 
+Caminar por la costanera es la actividad preferida de locales y visitantes",
+"https://www.todoprovincial.com/wp-content/uploads/2021/11/chascomuus.jpg"),
+("Bolivia", 3, 2, 60, 1,
+"Bolivia es un país con una amplia variedad de paisajes, 
+rica historia, importante cultura, tradiciones ancestrales y cálidas personas.",
+"https://lh3.googleusercontent.com/proxy/0gvE9j2FaaLrLL2CNkpEQDhz1EjHd-GvQ-4pAGZl0ECF3uWnDXa-8Hn8DH4zzeBOmLMByli0s1295INOAXR1pz1IT6G4r6IhFB8ARdqefvS9dvX57z3uMtXg3cgru8fcXUSOwMHt5Sl_FOhEhGM4vg8bbvX5xrO7DTE6OZjanXEIgkdEU-XVA3Q-HYQwao7FhDEgnA9uJgK_2Q_iMa4CDpn5weFNAtV5FZxQLjQ-0Q"),
+("Chile", 7, 30, 7, 2, 
+"Desde el extremo norte con el desierto más árido del mundo, 
+hasta el sur austral con hielos eternos y cascadas invertidas, 
+Chile es una invitación difícil de rechazar. 
+Conoce el turismo en Chile, y asómbrate con las experiencias en el extremo sur del mundo.", 
+"https://www.zicasso.com/static/e647a850cfd012261cf6d0a70ffb3968/5b569/e647a850cfd012261cf6d0a70ffb3968.jpg");
 
 INSERT INTO usuario (nombre, cantidad_monedas, tiempo, tipo_atraccion_favorita, es_admin) 
 VALUES
