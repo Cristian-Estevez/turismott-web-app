@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,20 +11,18 @@ public class Usuario {
 	private double monedasDeOro;
 	private double tiempoDisponible;
 	private TipoDeAtraccion tipoAtraccionFavorita;
-	private List<Producto> productos;
+	private List<Producto> productos = new ArrayList<Producto>();
 	private boolean esAdmin;
 
 	
 	public Usuario(int usuarioId, String nombre, double monedasDeOro, double tiempoDisponible,
-			TipoDeAtraccion tipoAtraccionFavorita, List<Producto> productos, boolean esAdmin) {
+			TipoDeAtraccion tipoAtraccionFavorita, boolean esAdmin) {
 		this.usuarioId = usuarioId;
 		this.nombre = nombre;
 		this.monedasDeOro = monedasDeOro;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
-		this.productos = productos;
 	}
-	
 	
 	public void comprarProducto(Producto producto) {
 		descontarMonedasDeOro(producto.getCosto());
@@ -61,7 +60,7 @@ public class Usuario {
 	
 	public TipoDeAtraccion getTipoAtraccionFavorita() { return tipoAtraccionFavorita; }
 	
-	public boolean getEsAdmin() {return esAdmin; }
+	public boolean getEsAdmin() { return esAdmin; }
 
 	@Override
 	public int hashCode() {
