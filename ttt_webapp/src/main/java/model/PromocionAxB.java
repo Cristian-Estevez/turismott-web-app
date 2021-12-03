@@ -31,12 +31,10 @@ public class PromocionAxB extends Promocion {
 	}
 
 	@Override
-	public double getCosto() { return costo;	}
+	public double getCosto() { return costo; }
 	
 	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
+	public int hashCode() {	return super.hashCode(); }
 
 	@Override
 	public boolean equals(Object obj) {
