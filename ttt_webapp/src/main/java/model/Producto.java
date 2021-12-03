@@ -6,28 +6,25 @@ public abstract class Producto {
 	
 	private int numeroId;
 	private String nombre;
-	private double costo;
 	private TipoDeAtraccion tipoDeAtraccion;
 	private String descripcion;
 	private String urlImagen;
+	private double costo;
 	
-	public Producto(int numeroId, String nombre, double costo, 
+	public Producto(int numeroId, String nombre, 
 			TipoDeAtraccion tipoDeAtraccion, 
 			String descripcion, String urlImagen) {
 		this.numeroId = numeroId;
 		this.nombre = nombre;
-		this.costo = costo;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 		this.descripcion = descripcion;
 		this.urlImagen = urlImagen;
 		
 	}
 	
+	public double getCosto() { return this.costo; }
+	
 	public int getId() { return numeroId; }
-	
-	public double getCosto() { return costo; }
-	
-	public void setCosto(double costo) { this.costo = costo; }
 	
 	public TipoDeAtraccion getTipoDeAtraccion() { return tipoDeAtraccion; }
 	
@@ -45,7 +42,7 @@ public abstract class Producto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(costo, descripcion, nombre, numeroId, tipoDeAtraccion, urlImagen);
+		return Objects.hash(descripcion, nombre, numeroId, tipoDeAtraccion, urlImagen);
 	}
 
 	@Override
@@ -57,8 +54,7 @@ public abstract class Producto {
 		if (getClass() != obj.getClass())
 			return false;
 		Producto other = (Producto) obj;
-		return Double.doubleToLongBits(costo) == Double.doubleToLongBits(other.costo)
-				&& Objects.equals(descripcion, other.descripcion) && Objects.equals(nombre, other.nombre)
+		return Objects.equals(descripcion, other.descripcion) && Objects.equals(nombre, other.nombre)
 				&& numeroId == other.numeroId && tipoDeAtraccion == other.tipoDeAtraccion
 				&& Objects.equals(urlImagen, other.urlImagen);
 	}

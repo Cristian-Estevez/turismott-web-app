@@ -24,7 +24,6 @@ public class Usuario {
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
 	}
 	
-	
 	public void comprarProducto(Producto producto) {
 		descontarMonedasDeOro(producto.getCosto());
 		descontarTiempoDisponible(producto.getTiempoDeDuracion());

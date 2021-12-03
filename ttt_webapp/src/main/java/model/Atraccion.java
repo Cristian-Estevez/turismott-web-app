@@ -6,21 +6,31 @@ public class Atraccion extends Producto {
 
 	private int cupo;
 	private double tiempoDeDuracion;
+	private double costo;
 
 	public Atraccion(int numeroId, String nombre, double costo, double tiempoDeDuracion,
 			int cupo, TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen) {
-		super(numeroId, nombre, costo, tipoDeAtraccion, descripcion, urlImagen);
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen);
 		this.cupo = cupo;
-		this.tiempoDeDuracion = tiempoDeDuracion; 
+		this.tiempoDeDuracion = tiempoDeDuracion;
+		this.setCosto(costo);
 	}
 
 	public double getTiempoDeDuracion() { return tiempoDeDuracion; }
+
+	public double getCosto() { return costo; }
+	
+	public void setCosto(double costo) { this.costo = costo; }
 	
 	@Override
 	public boolean esPromocion() { return false; }
 
 	@Override
-	protected void ocuparPlaza() { cupo--; }
+	protected void ocuparPlaza() { 
+		if (this.getLugaresDisponibles() > 0) {
+			cupo--;
+		}
+	}
 
 	@Override
 	public int getLugaresDisponibles() { return cupo; }

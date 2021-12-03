@@ -5,35 +5,42 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Promocion extends Producto {
-	
+
 	private List<Atraccion> atraccionesIncluidas;
 	private double tiempoDeDuracion;
+	protected double costo;
 
-	public Promocion(int numeroId, String nombre, double costo,
-			TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas) {
-		super(numeroId, nombre, costo, tipoDeAtraccion, descripcion, urlImagen);
+	public Promocion(int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion, 
+			String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas) {
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen);
 		this.atraccionesIncluidas = atraccionesIncluidas;
 		this.setTiempoDeDuracion();
 	}
-	
+
 	private void setTiempoDeDuracion() {
 		for (Atraccion unaAtraccion : atraccionesIncluidas) {
 			tiempoDeDuracion += unaAtraccion.getTiempoDeDuracion();
 		}
 	}
-	
-	public double getTiempoDeDuracion() { return tiempoDeDuracion; }
-	
+
+	public double getTiempoDeDuracion() {
+		return tiempoDeDuracion;
+	}
+
 	@Override
-	public boolean esPromocion() { return true;	}
+	public boolean esPromocion() {
+		return true;
+	}
 
 	@Override
 	protected void ocuparPlaza() {
-		for (Atraccion unaAtraccion : atraccionesIncluidas) {
-			unaAtraccion.ocuparPlaza();
+		if (this.getLugaresDisponibles() > 0) {
+			for (Atraccion unaAtraccion : atraccionesIncluidas) {
+				unaAtraccion.ocuparPlaza();
+			}
 		}
 	}
-	
+
 	@Override
 	public int getLugaresDisponibles() {
 		int lugaresDisponibles = 0;
@@ -50,8 +57,10 @@ public abstract class Promocion extends Producto {
 		return lugaresDisponibles;
 	}
 
-	public ArrayList<Atraccion> getAtraccionesIncluidas() { return (ArrayList<Atraccion>) atraccionesIncluidas; }
-	
+	public ArrayList<Atraccion> getAtraccionesIncluidas() {
+		return (ArrayList<Atraccion>) atraccionesIncluidas;
+	}
+
 	@Override
 	public boolean incluye(Producto producto) {
 		for (Producto unProducto : atraccionesIncluidas) {
@@ -59,7 +68,7 @@ public abstract class Promocion extends Producto {
 				return true;
 			}
 		}
-		return false;		
+		return false;
 	}
 
 	@Override
