@@ -168,26 +168,26 @@ Conoce el turismo en Chile, y asómbrate con las experiencias en el extremo sur 
 
 INSERT INTO usuario (nombre, cantidad_monedas, tiempo, tipo_atraccion_favorita, es_admin) 
 VALUES
-("Admin", 0, 0, 1, 1),
-("Eowyn", 10, 8, 1, 0),
-("Gandalf", 100, 5, 2, 0),
-("Sam", 36, 8, 3, 0),
-("Galadriel", 120, 4, 2, 0),
-("Ivan", 85, 7, 3, 0),
-("Nahuel", 30, 6, 2, 0),
-("Cristian Joel", 95, 3, 1, 0),
-("Juanjo", 200, 5, 3, 0),
-("Cristian Rigoberto",100, 2, 2, 0),
-("Cristian", 62, 60, 1, 0),
-("Micaela", 98, 10, 2, 0),
-("Federico", 68, 6, 3, 0),
-("Lucas", 160, 9, 2, 0),
-("Quique", 98, 8, 1, 0),
-("Evita", 46, 9, 1, 0),
-("Frida", 320, 9, 2, 0),
-("Silvina", 200, 9, 3, 0),
-("Chavela", 50, 10, 3, 0),
-("Alfonsina", 93, 8, 1, 0);
+("admin", 0, 0, 1, 1),
+("eowyn", 10, 8, 1, 0),
+("gandalf", 100, 5, 2, 0),
+("sam", 36, 8, 3, 0),
+("galadriel", 120, 4, 2, 0),
+("ivan", 85, 7, 3, 0),
+("nahuel", 30, 6, 2, 0),
+("cristian joel", 95, 3, 1, 0),
+("juanjo", 200, 5, 3, 0),
+("cristian rigoberto",100, 2, 2, 0),
+("cristian", 62, 60, 1, 0),
+("micaela", 98, 10, 2, 0),
+("federico", 68, 6, 3, 0),
+("lucas", 160, 9, 2, 0),
+("quique", 98, 8, 1, 0),
+("evita", 46, 9, 1, 0),
+("frida", 320, 9, 2, 0),
+("silvina", 200, 9, 3, 0),
+("chavela", 50, 10, 3, 0),
+("alfonsina", 93, 8, 1, 0);
 
 INSERT INTO promocion (tipo_atraccion, nombre, descuento_costo, tipo_promocion, atraccion_id, descripcion, url_imagen)
 VALUES

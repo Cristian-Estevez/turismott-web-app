@@ -2,6 +2,6 @@ package model;
 
 public enum TipoDeAtraccion {
 
-	AVENTURA, DEGUSTACION, PAISAJE;
+	AVENTURA, DEGUSTACION, PAISAJE, NULL;
 
 }
