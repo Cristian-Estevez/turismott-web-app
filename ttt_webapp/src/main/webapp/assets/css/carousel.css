@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#imagen-carousel {
+    margin: auto;
+    max-height: 60rem;
+    max-width: 60rem;
+    min-height: 35rem;
+}
+
+#carousel {
+    background-color: #280004;    
+}
