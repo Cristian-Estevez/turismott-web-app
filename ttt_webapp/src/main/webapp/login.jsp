@@ -42,7 +42,7 @@
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<img id="imagen-carousel"
-						src="https://static.wikia.nocookie.net/eldragonverde/images/6/6a/Mordor.png/revision/latest/scale-to-width-down/683?cb=20120129215409&path-prefix=es"
+						src="https://storge.pic2.me/cm/2560x1440/180/605e74fa825653.60114200.jpg"
 						class="d-block" alt="Mordor">
 				</div>
 				<div class="carousel-item">
@@ -52,7 +52,7 @@
 				</div>
 				<div class="carousel-item">
 					<img id="imagen-carousel"
-						src="https://static.wikia.nocookie.net/middle-earth-roleplay/images/c/cf/Lorien.jpg/revision/latest/scale-to-width-down/1000?cb=20161005001852"
+						src="https://elvenwisdomblog.files.wordpress.com/2020/09/tim-catherall-lothlorien.jpg"
 						class="d-block " alt="Lothlorien">
 				</div>
 			</div>
