@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+h1, h2, h3, h4, h5, h6 {
+    color: #280004;
+    letter-spacing: 1px;
+    
+}
+
+#titulo {
+    font-size: 3rem;
+    font-weight: bold !important;
+}
+
+#membrete {
+    font-size: 1.3rem;
+}
+
+.es-logo{
+    font-family: 'Libre Baskerville', serif;
+}
+
+main{
+    background-color: #ccc9a1;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}

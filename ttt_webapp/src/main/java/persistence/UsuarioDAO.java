@@ -20,12 +20,11 @@ public class UsuarioDAO {
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, nombreUsuario.toLowerCase());
 			ResultSet resultado = statement.executeQuery();
-						
 			if (resultado.next()) {
 				usuario = instanciarUsuario(resultado);
 			}						
 		} catch (Exception e) {
-			System.err.println("Error encontrando al usuario" + nombreUsuario);
+			System.err.println("Error encontrando al usuario " + nombreUsuario);
 		}
 		return usuario;
 	}
