@@ -69,16 +69,9 @@
 		</div>
 
 		<div id="contenedor-form" class="container my-5 text-center p-5">
-			<form class="row m-2 pb-2">
+			<form class="row m-2 pb-2" action="login">
 				<div class="col">
-					<select class="form-control px-5 border border-dark"
-						id="menu-nombres">
-						<option selected>Quien eres....? (click para elegir
-							usuario)</option>
-						<option value="1">Gandalf</option>
-						<option value="2">Sam</option>
-						<option value="3">Frodo</option>
-					</select>
+					<input type="text" class="form-control" id="nombreUsuario" placeholder="Ingresa tu nombre">
 				</div>
 				<div class="col">
 					<button type="submit"
