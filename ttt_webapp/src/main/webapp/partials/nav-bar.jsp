@@ -14,7 +14,7 @@
 				<li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
 				<li class="nav-item"><a class="nav-link">Mi itinerario</a></li>
 				<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-				<li class="nav-item"><a class="nav-link" href="logout">Salir</a></li>
+				<li class="nav-item"><a class="nav-link" href="/ttt_webapp/logout">Salir</a></li>
 			</ul>
 		</div>
 	</div>

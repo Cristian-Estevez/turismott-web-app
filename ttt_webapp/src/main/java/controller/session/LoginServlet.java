@@ -51,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getSession().removeAttribute("flash");
+		
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(req, resp);
