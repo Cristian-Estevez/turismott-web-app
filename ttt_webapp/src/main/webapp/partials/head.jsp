@@ -5,6 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!--Bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -31,6 +32,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"
 	rel="stylesheet">
-	
+
 <!-- self css -->
-<link rel="stylesheet" href="assets/css/footer.css">
+<link rel="stylesheet" href="/ttt_webapp/assets/css/footer.css">
+<link rel="stylesheet" href="/ttt_webapp/assets/css/main-general.css">
