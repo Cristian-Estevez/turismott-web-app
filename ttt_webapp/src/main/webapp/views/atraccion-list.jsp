@@ -59,11 +59,10 @@
 									</c:when>
 									<c:otherwise>
 										<a href="#" class="btn btn-secondary rounded disabled"
-											role="button">No se puede comprar</a>
+											role="button">Comprar</a>
 									</c:otherwise>
-								</c:choose></td>
-	                            </td>
-	                            
+								</c:choose>
+	                            </td>	                            
 	                        </tr>
 	                    </c:forEach>
                     </tbody>
