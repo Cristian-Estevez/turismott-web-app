@@ -7,10 +7,8 @@
 
 <jsp:include page="partials/head.jsp"></jsp:include>
 
-
 <link rel="stylesheet" href="assets/css/carousel.css">
 <link rel="stylesheet" href="assets/css/login-form.css">
-<link rel="stylesheet" href="assets/css/main-general.css">
 
 </head>
 <body>
