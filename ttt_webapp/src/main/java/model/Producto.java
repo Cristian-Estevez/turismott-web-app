@@ -22,7 +22,7 @@ public abstract class Producto {
 		
 	}
 	
-	public double getCosto() { return this.costo; }
+	public double getCosto() { return costo; }
 	
 	public int getId() { return numeroId; }
 	
@@ -43,6 +43,8 @@ public abstract class Producto {
 	public String getUrlImagen() { return urlImagen; }
 
 	public void setUrlImagen(String urlImagen) { this.urlImagen = urlImagen; }
+	
+	public boolean tieneLugar() { return getLugaresDisponibles() > 0; }
 
 	@Override
 	public int hashCode() {

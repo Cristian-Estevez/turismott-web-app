@@ -20,6 +20,7 @@ public class PromocionDAOTest {
 		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
 		
 		for (Promocion p : promociones) {
+			System.out.println("La promo " + p.getNombre() + " vale: $" + p.getCosto());
 			assertNotNull(p);
 		}
 		

@@ -64,6 +64,14 @@ public class Usuario {
 
 	public boolean isNull() { return false; }
 	
+	public boolean puedeComprar(Producto producto) {
+		return producto.getCosto() <= monedasDeOro;
+	}
+	
+	public boolean puedeAsistir(Producto producto) {
+		return tiempoDisponible >= producto.getTiempoDeDuracion();
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(esAdmin, monedasDeOro, nombre, productos, tiempoDisponible, tipoAtraccionFavorita,

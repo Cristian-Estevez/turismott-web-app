@@ -37,6 +37,7 @@
                             <th scope="col">Tipo</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Imagen</th>
+                            <th scope="col">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,20 @@
 	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
 	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
 	                            </td>
+	                            <td>
+	                            <c:choose>
+									<c:when
+										test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
+										<a href="/turismo/attractions/buy.do?id=${producto.id}"
+											class="btn btn-success rounded" role="button">Comprar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="#" class="btn btn-secondary rounded disabled"
+											role="button">No se puede comprar</a>
+									</c:otherwise>
+								</c:choose></td>
+	                            </td>
+	                            
 	                        </tr>
 	                    </c:forEach>
                     </tbody>

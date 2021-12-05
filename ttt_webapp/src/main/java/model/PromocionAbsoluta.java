@@ -14,4 +14,7 @@ public class PromocionAbsoluta  extends Promocion{
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
+	
+	@Override
+	public double getCosto() { return costo; }
 }
