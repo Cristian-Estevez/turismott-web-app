@@ -69,9 +69,16 @@
 		</div>
 
 		<div id="contenedor-form" class="container my-5 text-center p-5">
-			<form class="row m-2 pb-2" action="login">
+			<c:if test="${flash != null}">
+				<div class="alert alert-danger">
+					<p>
+						<c:out value="${flash}" />
+					</p>
+				</div>
+			</c:if>
+			<form class="row m-2 pb-2" action="login" method="post">
 				<div class="col">
-					<input type="text" class="form-control" id="nombreUsuario" placeholder="Ingresa tu nombre">
+					<input type="text" class="form-control" name="nombreUsuario" placeholder="Ingresa tu nombre">
 				</div>
 				<div class="col">
 					<button type="submit"
@@ -80,7 +87,7 @@
 
 			</form>
 
-			<form class="row m-2 pt-2" action="">
+			<form class="row m-2 pt-2" action="" method="post">
 				<div class="col">
 					<button type="submit"
 						class="form-control btn btn-secondary border border-dark">Ingresar

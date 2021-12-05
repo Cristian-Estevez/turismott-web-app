@@ -60,8 +60,10 @@ public class Usuario {
 	
 	public TipoDeAtraccion getTipoAtraccionFavorita() { return tipoAtraccionFavorita; }
 	
-	public boolean getEsAdmin() { return esAdmin; }
+	public boolean esAdmin() { return esAdmin; }
 
+	public boolean isNull() { return false; }
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(esAdmin, monedasDeOro, nombre, productos, tiempoDisponible, tipoAtraccionFavorita,
