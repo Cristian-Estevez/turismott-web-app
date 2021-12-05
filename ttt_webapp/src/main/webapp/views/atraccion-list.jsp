@@ -41,7 +41,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
                             <th scope="row"><a href="#" class="rowlink text-decoration-none text-light">1</a></th>
                             <td>Mordor</td>
@@ -50,29 +49,6 @@
                             <td><img class="align-self-center" id="imagen-lista"
                                     src="https://static.wikia.nocookie.net/eldragonverde/images/6/6a/Mordor.png/revision/latest/scale-to-width-down/683?cb=20120129215409&path-prefix=es"
                                     class="d-block" alt="Mordor">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row"><a href="#" class="rowlink text-decoration-none text-light">2</a></th>
-                            <td>Moria</td>
-                            <td>Paisaje</td>
-                            <td>86</td>
-                            <td>
-                                <img class="align-self-center" id="imagen-lista"
-                                    src="https://upload.wikimedia.org/wikipedia/en/3/3f/Dwarrodelf.jpg"
-                                    class="d-block    " alt="Moria">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#" class="rowlink text-decoration-none text-light">3</a></th>
-                            <td>Lothlorien</td>
-                            <td>Degustacion</td>
-                            <td>40</td>
-                            <td>
-                                <img class="align-self-center" id="imagen-lista"
-                                    src="https://static.wikia.nocookie.net/middle-earth-roleplay/images/c/cf/Lorien.jpg/revision/latest/scale-to-width-down/1000?cb=20161005001852"
-                                    class="d-block " alt="Lothlorien">
                             </td>
                         </tr>
                     </tbody>
