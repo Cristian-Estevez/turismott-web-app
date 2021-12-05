@@ -24,7 +24,7 @@ public class UsuarioDAO {
 				usuario = instanciarUsuario(resultado);
 			}						
 		} catch (Exception e) {
-			System.err.println("Error encontrando al usuario " + nombreUsuario);
+			System.err.println("No se ha encontrado al usuario " + nombreUsuario + " en BBDD (UsuarioDAO)");
 		}
 		return usuario;
 	}
