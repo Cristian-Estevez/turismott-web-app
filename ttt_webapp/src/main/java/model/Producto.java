@@ -39,6 +39,10 @@ public abstract class Producto {
 	public abstract boolean incluye(Producto producto);
 	
 	public abstract double getTiempoDeDuracion();
+	
+	public String getUrlImagen() { return urlImagen; }
+
+	public void setUrlImagen(String urlImagen) { this.urlImagen = urlImagen; }
 
 	@Override
 	public int hashCode() {

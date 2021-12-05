@@ -33,7 +33,6 @@
                 <table class="table table-dark table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Atraccion</th>
                             <th scope="col">Tipo</th>
                             <th scope="col">Precio</th>
@@ -41,16 +40,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"><a href="#" class="rowlink text-decoration-none text-light">1</a></th>
-                            <td>Mordor</td>
-                            <td>Aventura</td>
-                            <td>56</td>
-                            <td><img class="align-self-center" id="imagen-lista"
-                                    src="https://static.wikia.nocookie.net/eldragonverde/images/6/6a/Mordor.png/revision/latest/scale-to-width-down/683?cb=20120129215409&path-prefix=es"
-                                    class="d-block" alt="Mordor">
-                            </td>
-                        </tr>
+                    	<c:forEach items="${ productos }" var="producto">
+	                        <tr>
+	                            <td><c:out value="${ producto.nombre }"></c:out></td>
+	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
+	                            <td><c:out value="${ producto.costo }"></c:out></td>
+	                            <td><img class="align-self-center" id="imagen-lista"
+	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
+	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
+	                            </td>
+	                        </tr>
+	                    </c:forEach>
                     </tbody>
                 </table>
             </div>
