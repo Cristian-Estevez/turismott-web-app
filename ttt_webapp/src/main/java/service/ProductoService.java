@@ -8,6 +8,7 @@ import model.Promocion;
 import model.TipoDeAtraccion;
 import persistence.AtraccionDAO;
 import persistence.PromocionDAO;
+import utils.ProductosPorPreferencia;
 
 public class ProductoService {
 	
@@ -17,7 +18,12 @@ public class ProductoService {
 		
 		PromocionDAO pDAO = new PromocionDAO();
 		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
-		// TODO instanciar promos y devolver el listado con todos los productos
-		return new ArrayList<Producto>();
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		productos.addAll(atracciones);
+		productos.addAll(promociones);
+		productos.sort(new ProductosPorPreferencia(preferenciaUsuario));
+		// TODO instanciar promos y devolver el listado con todos los productos ordenados por preferencia
+		return productos;
 	}
 }

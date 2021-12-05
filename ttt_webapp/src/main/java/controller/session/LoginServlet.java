@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("item-activo", "inicio");
+			req.getSession().setAttribute("productos", productos);
 			resp.sendRedirect("views/atraccion-list.jsp");
 		} else {
 			req.setAttribute("flash", "Nombre de usuario incorrecto");

@@ -142,7 +142,7 @@ Conocido anteriormente como el Gran Bosque Verde,
 desde la construcción de la fortaleza de Dol Guldur 
 por parte de Sauron, una gran sombra se cernió sobre el bosque, 
 pasando a llamarse Bosque Negro.",
-"https://static.wikia.nocookie.net/bibliotecadelatierramedia/images/7/7a/Bosque_Negro.jpg/revision/latest?cb=20140730114538&path-prefix=es"),
+"https://elanillounico.com/wp-content/uploads/2016/08/Jon-Hodgson-El-Bosque-Negro.jpg"),
 ("Mar del Plata", 4, 5, 13, 3, 
 "Mar del Plata es una ciudad balnearia argentina en la costa del Atlántico. 
 Su larga franja de playas incluye la amplia Punta Mogotes y Playa Grande, con sus rompientes para el surf. 
@@ -158,7 +158,7 @@ Caminar por la costanera es la actividad preferida de locales y visitantes",
 ("Bolivia", 3, 2, 60, 1,
 "Bolivia es un país con una amplia variedad de paisajes, 
 rica historia, importante cultura, tradiciones ancestrales y cálidas personas.",
-"https://lh3.googleusercontent.com/proxy/0gvE9j2FaaLrLL2CNkpEQDhz1EjHd-GvQ-4pAGZl0ECF3uWnDXa-8Hn8DH4zzeBOmLMByli0s1295INOAXR1pz1IT6G4r6IhFB8ARdqefvS9dvX57z3uMtXg3cgru8fcXUSOwMHt5Sl_FOhEhGM4vg8bbvX5xrO7DTE6OZjanXEIgkdEU-XVA3Q-HYQwao7FhDEgnA9uJgK_2Q_iMa4CDpn5weFNAtV5FZxQLjQ-0Q"),
+"https://blog.ptvgroup.com/wp-content/uploads/2019/10/ptv-blog_road-safety-bolivia_la-paz-1.jpg"),
 ("Chile", 7, 30, 7, 2, 
 "Desde el extremo norte con el desierto más árido del mundo, 
 hasta el sur austral con hielos eternos y cascadas invertidas, 

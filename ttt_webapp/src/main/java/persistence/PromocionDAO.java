@@ -44,8 +44,7 @@ public class PromocionDAO {
 								atraccionesIncluidas.add(unaAtraccion);
 							} else {
 								atraccionesIncluidas.add(0, unaAtraccion);
-							}
-							
+							}							
 						}
 					}
 				}
@@ -70,25 +69,16 @@ public class PromocionDAO {
 		return promociones;
 	}
 	
-	
-//	int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion,
-//	double porcentajeDescuento,	String descripcion, String urlImagen, 
-//	List<Atraccion> atraccionesIncluidas)
 	private Promocion instanciarPromocionPorcentual(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionPorcentual(infoPromocion.getInt(2), infoPromocion.getString(3), TipoDeAtraccion.valueOf(infoPromocion.getString(5)),
 				infoPromocion.getDouble(4), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
 	}
 
-	//	int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion,
-//	String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas
 	private Promocion instanciarPromocionAxB(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionAxB(infoPromocion.getInt(2), infoPromocion.getString(3), 
 				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
 	}
 
-	//(int numeroId, String nombre, double costo, 
-//	TipoDeAtraccion tipoDeAtraccion, String descripcion, 
-//	String urlImagen, List<Atraccion> atraccionesIncluidas)
 	private Promocion instanciarPromocionAbsoluta(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionAbsoluta(infoPromocion.getInt(2), infoPromocion.getString(3), infoPromocion.getDouble(4), 
 				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
