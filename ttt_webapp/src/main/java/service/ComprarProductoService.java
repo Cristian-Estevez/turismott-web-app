@@ -36,7 +36,24 @@ public class ComprarProductoService {
 			}
 		}
 		
-		usuario.comprarProducto(productoAComprar);
+		if (productoAComprar != null) {
+			usuario.comprarProducto(productoAComprar);
+			this.actualizarUsuarioBBDD(usuario);
+			this.actualizarProductoBBDD(productoAComprar, pDAO, aDAO);
+		}
+	}
+	
+	private void actualizarProductoBBDD(Producto producto, PromocionDAO pDAO, AtraccionDAO aDAO) {
+		if (producto.esPromocion()) {
+			pDAO.update(producto);
+		} else if (!producto.esPromocion()){
+			aDAO.update(producto);
+		}
+	}
+
+	private void actualizarUsuarioBBDD(Usuario usuario) {
+		UsuarioDAO uDAO = new UsuarioDAO();		
+		uDAO.update(usuario);
 	}
 	
 }
