@@ -47,7 +47,7 @@ public class ComprarProductoService {
 		if (producto.esPromocion()) {
 			pDAO.update(producto);
 		} else if (!producto.esPromocion()){
-			aDAO.update(producto);
+			aDAO.update((Atraccion)producto);
 		}
 	}
 
