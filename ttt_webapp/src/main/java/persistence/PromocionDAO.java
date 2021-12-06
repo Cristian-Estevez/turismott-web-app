@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Atraccion;
+import model.Producto;
 import model.Promocion;
 import model.PromocionAbsoluta;
 import model.PromocionAxB;
@@ -82,6 +83,15 @@ public class PromocionDAO {
 	private Promocion instanciarPromocionAbsoluta(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionAbsoluta(infoPromocion.getInt(2), infoPromocion.getString(3), infoPromocion.getDouble(4), 
 				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
+	}
+	
+	public void update(Producto producto) {
+		AtraccionDAO aDAO = new AtraccionDAO();
+		ArrayList<Atraccion> atraccionesIncluidas = ((Promocion) producto).getAtraccionesIncluidas();
+		
+		for (Atraccion unaAtraccion : atraccionesIncluidas) {
+			aDAO.update(unaAtraccion);
+		}
 	}
 	
 }

@@ -37,4 +37,20 @@ public class AtraccionDAO {
 				infoAtraccion.getString(7), infoAtraccion.getString(8));
 	}
 	
+	public void update(Atraccion atraccion) {
+		String query = "UPDATE atraccion SET cupo = ? WHERE atraccion.id = ?";
+		String cupo = Integer.toString(atraccion.getLugaresDisponibles());
+		String idAtraccion = Integer.toString(atraccion.getId());
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, cupo);
+			statement.setString(2, idAtraccion);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("Error al actualizar atraccion en BBDD.");
+		}
+	}
+	
 }

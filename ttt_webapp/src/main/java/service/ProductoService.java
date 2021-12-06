@@ -23,7 +23,6 @@ public class ProductoService {
 		productos.addAll(atracciones);
 		productos.addAll(promociones);
 		productos.sort(new ProductosPorPreferencia(preferenciaUsuario));
-		// TODO instanciar promos y devolver el listado con todos los productos ordenados por preferencia
 		return productos;
 	}
 }

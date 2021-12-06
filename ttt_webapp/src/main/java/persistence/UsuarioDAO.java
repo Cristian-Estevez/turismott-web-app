@@ -29,6 +29,23 @@ public class UsuarioDAO {
 		return usuario;
 	}
 	
+	public void update(Usuario usuario) {
+		String nombre = usuario.getNombre();
+		String tiempo = Double.toString(usuario.getTiempoDisponible());
+		String cantidad_monedas = Double.toString(usuario.getMonedasDeOro());
+		try {
+			String sql = "UPDATE usuario SET tiempo = ?, cantidad_monedas = ? WHERE usuario.nombre = ?;";
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, tiempo);
+			statement.setString(2, cantidad_monedas);
+			statement.setString(3, nombre);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("No se pudo actualizar el usuario en BBDD.");
+		}
+	}
+	
 	private Usuario instanciarUsuario(ResultSet infoUsuario) throws SQLException {
 		return new Usuario(infoUsuario.getInt(1), infoUsuario.getString(2), infoUsuario.getDouble(3), infoUsuario.getDouble(4),
 				TipoDeAtraccion.valueOf(infoUsuario.getString(5)), infoUsuario.getBoolean(6));
