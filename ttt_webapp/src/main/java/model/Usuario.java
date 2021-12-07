@@ -13,6 +13,7 @@ public class Usuario {
 	private TipoDeAtraccion tipoAtraccionFavorita;
 	private List<Producto> productos = new ArrayList<Producto>();
 	private boolean esAdmin;
+	private int cantProductosCompradosPreviamente = 0;
 
 	
 	public Usuario(int usuarioId, String nombre, double monedasDeOro, double tiempoDisponible,
@@ -70,6 +71,18 @@ public class Usuario {
 	
 	public boolean puedeAsistir(Producto producto) {
 		return tiempoDisponible >= producto.getTiempoDeDuracion();
+	}
+	
+	public void actualizarCantidadDeProductosCompradaPreviamente() {
+		cantProductosCompradosPreviamente++;
+	}
+	
+	public int getCantProductosCompradosPreviamente() {
+		return cantProductosCompradosPreviamente;
+	}
+	
+	public void actualizarItinerario(Producto producto) {
+		this.productos.add(producto);
 	}
 	
 	@Override

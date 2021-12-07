@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.Producto;
 import model.TipoDeAtraccion;
 import model.Usuario;
 import model.nullobjects.NullUser;
@@ -29,7 +30,7 @@ public class UsuarioDAO {
 		return usuario;
 	}
 	
-	public void update(Usuario usuario) {
+	public void actualizarUsuario(Usuario usuario) {
 		String nombre = usuario.getNombre();
 		String tiempo = Double.toString(usuario.getTiempoDisponible());
 		String cantidad_monedas = Double.toString(usuario.getMonedasDeOro());
@@ -50,4 +51,52 @@ public class UsuarioDAO {
 		return new Usuario(infoUsuario.getInt(1), infoUsuario.getString(2), infoUsuario.getDouble(3), infoUsuario.getDouble(4),
 				TipoDeAtraccion.valueOf(infoUsuario.getString(5)), infoUsuario.getBoolean(6));
 	}
+
+	public void actualizarItinerario(Usuario usuario, Producto producto) {
+		String usuarioId = Integer.toString(usuario.getId());
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = null;
+			if (producto.esPromocion()) {
+				String query = "INSERT INTO itinerario(usuario_id, promocion_id) VALUES (?, ?);";
+				statement = conn.prepareStatement(query);
+				statement.setString(1, usuarioId);
+				statement.setString(2, Integer.toString(producto.getId()));
+			} else if (!producto.esPromocion()) {
+				String query = "INSERT INTO itinerario(usuario_id, atraccion_id) VALUES (?, ?);";
+				statement = conn.prepareStatement(query);
+				statement.setString(1, usuarioId);
+				statement.setString(2, Integer.toString(producto.getId()));
+			}
+			if (statement != null) {
+				statement.executeUpdate();
+			}
+		} catch (Exception e) {
+			System.err.println("No se puedo guardar la compra del usuario");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
