@@ -39,7 +39,7 @@
                 <table class="table table-dark table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Atraccion</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Tipo</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Imagen</th>
@@ -49,7 +49,7 @@
                     <tbody>
                     	<c:forEach items="${ productos }" var="producto">
 	                        <tr>
-	                            <td><a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="rowlink text-decoration-none text-light"><c:out value="${ producto.nombre }"></a></c:out></td>
+	                            <td><c:out value="${ producto.nombre }"></c:out></td>
 	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
 	                            <td><c:out value="${ producto.costo }"></c:out></td>
 	                            <td><img class="align-self-center" id="imagen-lista"
