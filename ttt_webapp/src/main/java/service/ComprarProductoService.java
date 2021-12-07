@@ -40,9 +40,16 @@ public class ComprarProductoService {
 			usuario.comprarProducto(productoAComprar);
 			this.actualizarUsuarioBBDD(usuario);
 			this.actualizarProductoBBDD(productoAComprar, pDAO, aDAO);
+			this.actualizarItinerario(productoAComprar);
 		}
 	}
 	
+	private void actualizarItinerario(Producto producto) {
+		UsuarioDAO uDAO = new UsuarioDAO();
+		uDAO.actualizarItinerario(producto);
+		
+	}
+
 	private void actualizarProductoBBDD(Producto producto, PromocionDAO pDAO, AtraccionDAO aDAO) {
 		if (producto.esPromocion()) {
 			pDAO.update(producto);

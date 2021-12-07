@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import model.Producto;
 import model.TipoDeAtraccion;
 import model.Usuario;
 import model.nullobjects.NullUser;
@@ -49,5 +51,15 @@ public class UsuarioDAO {
 	private Usuario instanciarUsuario(ResultSet infoUsuario) throws SQLException {
 		return new Usuario(infoUsuario.getInt(1), infoUsuario.getString(2), infoUsuario.getDouble(3), infoUsuario.getDouble(4),
 				TipoDeAtraccion.valueOf(infoUsuario.getString(5)), infoUsuario.getBoolean(6));
+	}
+
+	public void actualizarItinerario(Producto producto) {
+//		ArrayList<Producto> productosComprados = (ArrayList<Producto>) usuario.getProductosComprados();
+		
+		try {
+			
+		} catch (Exception e) {
+			System.err.println("No se puedo guardar la compra del usuario");
+		}
 	}
 }

@@ -8,7 +8,6 @@ import model.Promocion;
 import model.Usuario;
 import persistence.AtraccionDAO;
 import persistence.PromocionDAO;
-import utils.ProductosPorPreferencia;
 
 public class ProductoService {
 	
@@ -24,25 +23,25 @@ public class ProductoService {
 		productos.addAll(atracciones);
 		productos.addAll(promociones);
 		
-		ArrayList<Producto> productosParaOfertar = new ArrayList<Producto>();
+//		ArrayList<Producto> productosParaOfertar = new ArrayList<Producto>();
+//		
+//		productosParaOfertar = this.quitarYaComprados(productos, usuario);
+//		
+//		productosParaOfertar.sort(new ProductosPorPreferencia(usuario.getTipoAtraccionFavorita()));
 		
-		productosParaOfertar = this.quitarYaComprados(productos, usuario);
-		
-		productosParaOfertar.sort(new ProductosPorPreferencia(usuario.getTipoAtraccionFavorita()));
-		
-		return productosParaOfertar;
+		return productos;
 	}
 
-	private ArrayList<Producto> quitarYaComprados(ArrayList<Producto> productos, Usuario usuario) {
-		ArrayList<Producto> productosParaOfertar = new ArrayList<Producto>();
-
-		ArrayList<Producto> productosCopy = new ArrayList<Producto>(productos);
-
-		for (Producto unProducto : productos) {
-			if (usuario.yaCompro(unProducto)) {
-				productosCopy.remove(unProducto);
-			}
-		}
-		return productosCopy;		
-	}
+//	private ArrayList<Producto> quitarYaComprados(ArrayList<Producto> productos, Usuario usuario) {
+//		ArrayList<Producto> productosParaOfertar = new ArrayList<Producto>();
+//
+//		ArrayList<Producto> productosCopy = new ArrayList<Producto>(productos);
+//
+//		for (Producto unProducto : productos) {
+//			if (usuario.yaCompro(unProducto)) {
+//				productosCopy.remove(unProducto);
+//			}
+//		}
+//		return productosCopy;		
+//	}
 }
