@@ -9,7 +9,6 @@
     
     <link rel="stylesheet" href="/ttt_webapp/assets/css/tabla-atracciones.css">
 
-
 </head>
 
 <body>
@@ -50,7 +49,7 @@
                     <tbody>
                     	<c:forEach items="${ productos }" var="producto">
 	                        <tr>
-	                            <td><c:out value="${ producto.nombre }"></c:out></td>
+	                            <td><a href="#" class="rowlink text-decoration-none text-light"><c:out value="${ producto.nombre }"></a></c:out></td>
 	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
 	                            <td><c:out value="${ producto.costo }"></c:out></td>
 	                            <td><img class="align-self-center" id="imagen-lista"
