@@ -39,6 +39,21 @@ public class ProductoService {
 		return productosParaOfertar;
 	}
 
+	private ArrayList<Producto> getAll() {
+		AtraccionDAO aDAO = new AtraccionDAO();
+		ArrayList<Atraccion> atracciones = aDAO.getAll();
+		
+		PromocionDAO pDAO = new PromocionDAO();
+		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		
+		productos.addAll(atracciones);
+		productos.addAll(promociones);
+		
+		return productos;
+	}
+
 	private void cargarItinerario(Usuario usuario, ArrayList<Atraccion> atracciones, ArrayList<Promocion> promociones) {
 		String query = "SELECT itinerario.usuario_id, itinerario.atraccion_id, itinerario.promocion_id FROM itinerario WHERE itinerario.usuario_id = ?";
 		
@@ -85,5 +100,19 @@ public class ProductoService {
 			}
 		}
 		return productosCopy;		
+	}
+
+	public Producto obtenerProductoPorNombre(String nombreProducto) {
+		ArrayList<Producto> productos = this.getAll();
+
+		Producto productoAObtener = null;
+		
+		for (Producto unProducto : productos) {
+			if(unProducto.getNombre().equalsIgnoreCase(nombreProducto)) {
+				productoAObtener = unProducto;
+			}
+		}
+		
+		return productoAObtener;
 	}
 }
