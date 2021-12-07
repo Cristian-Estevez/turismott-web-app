@@ -69,7 +69,7 @@ public class UsuarioDAO {
 				statement.setString(2, Integer.toString(producto.getId()));
 			}
 			if (statement != null) {
-				statement.executeQuery();
+				statement.executeUpdate();
 			}
 		} catch (Exception e) {
 			System.err.println("No se puedo guardar la compra del usuario");
