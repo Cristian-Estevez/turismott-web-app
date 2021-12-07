@@ -39,7 +39,7 @@ public class ProductoService {
 		return productosParaOfertar;
 	}
 
-	private ArrayList<Producto> getAll() {
+	public ArrayList<Producto> getAll() {
 		AtraccionDAO aDAO = new AtraccionDAO();
 		ArrayList<Atraccion> atracciones = aDAO.getAll();
 		
