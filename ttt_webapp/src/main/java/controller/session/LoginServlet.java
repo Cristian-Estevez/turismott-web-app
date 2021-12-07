@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		String nombreUsuario = req.getParameter("nombreUsuario");
 		
 		Usuario usuario = loginService.login(nombreUsuario);
-		ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario.getTipoAtraccionFavorita());
+		ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
 		
 		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
