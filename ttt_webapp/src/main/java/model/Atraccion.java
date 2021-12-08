@@ -16,6 +16,7 @@ public class Atraccion extends Producto {
 		this.setCosto(costo);
 	}
 
+	
 	public double getTiempoDeDuracion() { return tiempoDeDuracion; }
 
 	public double getCosto() { return costo; }

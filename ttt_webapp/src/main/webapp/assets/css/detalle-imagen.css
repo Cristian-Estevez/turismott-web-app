@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#imagen-detalle {
+    margin: auto;
+    max-height: 60rem;
+    max-width: 60rem;
+    min-height: 35rem;
+}
+
+#contenedor-imagen {
+    background-color: #280004;    
+}

@@ -45,6 +45,8 @@ public abstract class Producto {
 	public void setUrlImagen(String urlImagen) { this.urlImagen = urlImagen; }
 	
 	public boolean tieneLugar() { return getLugaresDisponibles() > 0; }
+	
+	public String getDescripcion() { return descripcion; }
 
 	@Override
 	public int hashCode() {
