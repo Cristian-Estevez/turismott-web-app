@@ -36,14 +36,22 @@ public class ComprarProductoService {
 			}
 		}
 		
-		if (productoAComprar != null) {
+		if (productoAComprar != null && this.validarCompra(usuario, productoAComprar)) {
 			usuario.comprarProducto(productoAComprar);
 			this.actualizarUsuarioBBDD(usuario);
 			this.actualizarProductoBBDD(productoAComprar, pDAO, aDAO);
 			this.actualizarItinerarioBBDD(usuario, productoAComprar);
+		} else {
+			System.err.println("No se pudo efectuar la compra");
 		}
 	}
 	
+	private boolean validarCompra(Usuario usuario, Producto productoAComprar) {
+		return usuario.getMonedasDeOro() >= productoAComprar.getCosto() && 
+				usuario.getTiempoDisponible() >= productoAComprar.getTiempoDeDuracion() &&
+				productoAComprar.tieneLugar() && usuario.puedeAsistir(productoAComprar);
+	}
+
 	private void actualizarItinerarioBBDD(Usuario usuario,Producto producto) {
 		UsuarioDAO uDAO = new UsuarioDAO();
 		uDAO.actualizarItinerario(usuario, producto);
