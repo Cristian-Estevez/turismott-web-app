@@ -115,4 +115,28 @@ public class ProductoService {
 		
 		return productoAObtener;
 	}
+	
+	public ArrayList<Promocion> getAllPromociones() {
+		ArrayList<Producto> productos = new ArrayList<Producto>(); 
+		productos = this.getAll();
+		ArrayList<Promocion> todasLasPromociones = new ArrayList<Promocion>();
+		for (Producto unProducto : productos) {
+			if (unProducto.esPromocion()) {
+				todasLasPromociones.add((Promocion) unProducto);
+			}
+		}
+		return todasLasPromociones;
+	}
+
+	public ArrayList<Atraccion> obtenerAtraccionesDeLaPromocion(String nombre) {
+		ArrayList<Atraccion> atraccionesDeEstaPromocion = new ArrayList<Atraccion>();
+		ArrayList<Promocion> todasLasPromociones = this.getAllPromociones();
+
+		for (Promocion unaPromocion : todasLasPromociones) {
+			if (unaPromocion.getNombre().equalsIgnoreCase(nombre)) {
+				atraccionesDeEstaPromocion = unaPromocion.getAtraccionesIncluidas();
+			}
+		}
+		return atraccionesDeEstaPromocion;
+	}
 }

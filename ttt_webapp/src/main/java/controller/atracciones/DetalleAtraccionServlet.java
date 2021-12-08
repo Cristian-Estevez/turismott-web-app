@@ -1,6 +1,7 @@
 package controller.atracciones;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -8,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Atraccion;
 import model.Producto;
 import model.Usuario;
 import service.ProductoService;
@@ -37,7 +39,13 @@ public class DetalleAtraccionServlet extends HttpServlet {
 			req.getSession().setAttribute("producto", productoAMostrar);
 			req.getSession().setAttribute("usuario", usuario);
 			if (productoAMostrar.esPromocion()) {
+				
+				// logica para mandar solo los productos que contiene la promo
+				ArrayList<Atraccion> atraccionesDeEstaPromocion = productoService.obtenerAtraccionesDeLaPromocion(productoAMostrar.getNombre());
+				req.getSession().setAttribute("atraccionesDeEstaPromocion", atraccionesDeEstaPromocion);
 				resp.sendRedirect("detalle-promocion.jsp");
+				
+				
 			} else if (!productoAMostrar.esPromocion()) {
 				resp.sendRedirect("detalle-atraccion.jsp");
 			}

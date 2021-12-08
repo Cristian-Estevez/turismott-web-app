@@ -48,9 +48,9 @@
 					</c:otherwise>
 				</c:choose>				
 			</form>
-			<form class="row m-2 pt-2" action="atraccion-list.jsp">
+			<form class="row m-2 pt-2" >
 				<div class="col">				
-					<button type="submit"
+					<button type="submit" onclick="window.history.go(-1); return false;"
 						class="form-control btn btn-success border border-dark">Volver</button>
 				</div>
 			</form>
