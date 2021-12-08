@@ -36,7 +36,6 @@ public class MiItinerarioServlet extends HttpServlet {
 			req.getSession().setAttribute("usuario", usuario);
 			resp.sendRedirect("mi-itinerario.jsp");
 		} else {
-			req.setAttribute("flash", "Aquí veras los productos de tu itinerario una vez que los hayas comprado");
 			resp.sendRedirect("mi-itinerario.jsp");
 		}
 		

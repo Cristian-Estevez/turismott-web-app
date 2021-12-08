@@ -20,31 +20,20 @@
 
     <main>
         <div class="container-fluid text-center">
-            <h2 id="titulo" class="es-logo my-5">Nuestros Productos</h2>
+            <h2 id="titulo" class="es-logo my-5">Hola <span style="text-transform:capitalize;"><c:out value="${usuario.nombre}"></c:out></span>.</h2>
             
             <c:choose>
-            	<c:when test="${ usuario != null }">
-		            <p id="membrete" class="p-4 bg-light">
-		                Hola <span style="text-transform:capitalize;"><c:out value="${usuario.nombre}"></c:out></span>.
-		                 Hemos seleccionado estos productos de acuerdo con tus preferencias. <br>
-		                Esperamos que te gusten...
+            	<c:when test="${ itinerario != null }">
+		            <p id="membrete" class="p-4 bg-light">		                
+		                Estos son los productos que compraste hasta el momento.
 		            </p>
 	            </c:when>
 	            <c:otherwise>
 	            	<p id="membrete" class="p-4 bg-light">
-		                Bienvenido. Esperamos que te interesen nuestros productos. Si es así no dudes en 
-		                contactarnos.
+		                Aquí veras los productos de tu itinerario una vez que los hayas comprado
 		            </p>
 	            </c:otherwise>
-	        </c:choose>
-	            
-            <c:if test="${flash != null}">
-				<div class="alert alert-danger">
-					<p>
-						<c:out value="${flash}" />						
-					</p>
-				</div>
-			</c:if>
+	        </c:choose>	            
         </div>
 
         <div class="container text-center">
@@ -78,6 +67,14 @@
                 </table>
             </div>
         </div>
+        <div id="contenedor-form" class="container my-5 text-center p-5">			
+			<form class="row m-2 pt-2" >
+				<div class="col">				
+					<button type="submit" onclick="window.history.go(-1); return false;"
+						class="form-control btn btn-success border border-dark">Volver</button>
+				</div>
+			</form>
+		</div>
     </main>
 
     <footer>
