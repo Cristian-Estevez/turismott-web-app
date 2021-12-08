@@ -5,6 +5,9 @@
 <html>
 <head>
 	<jsp:include page="/partials/head.jsp"></jsp:include>	
+	<link rel="stylesheet" href="/ttt_webapp/assets/css/detalle-imagen.css">
+	<link rel="stylesheet" href="/ttt_webapp/assets/css/detalle-form.css">
+	<link rel="stylesheet" href="/ttt_webapp/assets/css/tabla-atracciones.css">
 </head>
 <body>
 	<header>
@@ -12,19 +15,82 @@
 		<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
     </header>
 	<main>
-
-
+		<div class="container-fluid text-center">
+			<h2 id="titulo" class="es-logo my-5"><c:out value="${producto.nombre}"></c:out></h2>
+		</div>
 		
-		<c:choose>
-			<c:when
-				test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
-				<a href="comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
-					class="btn btn-success rounded" role="button">Comprar</a>
-			</c:when>
-			<c:otherwise>
-				<a href="#" class="btn btn-secondary rounded disabled" role="button">Comprar</a>
-			</c:otherwise>
-		</c:choose>
+		<div id="contenedor-imagen" class="contenedor-imagen slide py-4" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img id="imagen-detalle"
+						src="<c:out value="${ producto.urlImagen }"></c:out>"
+						class="d-block" alt="Mordor">
+				</div>				
+			</div>			
+		</div>
+		
+		<div class="container-fluid text-center">
+			<p>
+				<c:out value="${producto.descripcion}"></c:out>
+			</p>
+		</div>
+		
+		<div class="container-fluid text-center">
+			<h2 class="es-logo my-5">Esta promo contiene las siguientes atracciones: </h2>
+		</div>
+		<div class="container text-center">
+            <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
+	                        <tr>
+	                            <td><c:out value="${ producto.nombre }"></c:out></td>
+	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
+	                            <td><c:out value="${ producto.costo }"></c:out></td>
+	                            <td><img class="align-self-center" id="imagen-lista"
+	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
+	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
+	                            </td>
+	                            <td>
+		                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
+	                            </td>	                            
+	                        </tr>
+	                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		
+		
+		<div id="contenedor-form" class="container my-5 text-center p-5">			
+			<form class="row m-2 pb-2">
+				<c:choose>
+					<c:when
+						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
+						<a href="comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
+							class="btn btn-success rounded" role="button">Comprar</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#" class="btn btn-secondary rounded disabled" role="button">Comprar</a>
+					</c:otherwise>
+				</c:choose>				
+			</form>
+			<form class="row m-2 pt-2" >
+				<div class="col">				
+					<button type="submit" onclick="window.history.go(-1); return false;"
+						class="form-control btn btn-success border border-dark">Volver</button>
+				</div>
+			</form>
+		</div>
 	</main>
 </body>
 </html>
