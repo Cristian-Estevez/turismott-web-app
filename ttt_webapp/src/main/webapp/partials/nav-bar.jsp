@@ -15,7 +15,7 @@
 				
 				<c:choose>
 					<c:when test="${usuario != null}">
-						<li class="nav-item"><a class="nav-link">Mi itinerario</a></li>
+						<li class="nav-item"><a href="mi-itinerario" class="nav-link">Mi itinerario</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a href="/ttt_webapp/login.jsp" class="nav-link">Ingresar</a></li>

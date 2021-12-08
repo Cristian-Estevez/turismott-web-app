@@ -54,6 +54,55 @@ public class ProductoService {
 		return productos;
 	}
 
+	public ArrayList<Producto> obtenerItinerario(Usuario usuario) {
+		AtraccionDAO aDAO = new AtraccionDAO();
+		ArrayList<Atraccion> atracciones = aDAO.getAll();
+		
+		PromocionDAO pDAO = new PromocionDAO();
+		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
+		
+		return this.crearItinerario(usuario, atracciones, promociones);
+	}
+	
+	private ArrayList<Producto> crearItinerario(Usuario usuario, ArrayList<Atraccion> atracciones, ArrayList<Promocion> promociones) {
+		String query = "SELECT itinerario.usuario_id, itinerario.atraccion_id, itinerario.promocion_id FROM itinerario WHERE itinerario.usuario_id = ?";
+		ArrayList<Producto> itinerarioDeUsuario = new ArrayList<Producto>(); 
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, Integer.toString(usuario.getId()));
+			ResultSet resultado = statement.executeQuery();
+			
+			while(resultado.next()) {
+				int id = resultado.getInt(2);
+				
+				// el resultado es una Promoción
+				if (resultado.wasNull()) {
+					id = resultado.getInt(3);
+					for (Promocion unaPromocion : promociones) {
+						if (id == unaPromocion.getId()) {
+							itinerarioDeUsuario.add(unaPromocion);
+						}
+					}
+				// el serultado es una Atraccion
+				} else {
+					for (Atraccion unaAtraccion : atracciones) {
+						if (id == unaAtraccion.getId()) {
+							itinerarioDeUsuario.add(unaAtraccion);
+						}
+					}
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			System.err.println("Error cargando el itinerario el usuario " + usuario.getNombre() );
+		}
+		
+		return itinerarioDeUsuario;
+	}
+	
+	
 	private void cargarItinerario(Usuario usuario, ArrayList<Atraccion> atracciones, ArrayList<Promocion> promociones) {
 		String query = "SELECT itinerario.usuario_id, itinerario.atraccion_id, itinerario.promocion_id FROM itinerario WHERE itinerario.usuario_id = ?";
 		
