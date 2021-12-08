@@ -48,7 +48,7 @@
         </div>
 
         <div class="container text-center">
-            <div class="table-responsive">
+            <%-- <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover">
                     <thead>
                         <tr>
@@ -76,8 +76,29 @@
 	                    </c:forEach>
                     </tbody>
                 </table>
-            </div>
-        </div>
+            </div> --%>
+			<div class="row">
+				<c:forEach items="${ productos }" var="producto">
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card h-100">
+							<a href="#"><img class="card-img-top " height="300"
+								src="${ producto.urlImagen }" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a class="text-decoration-none" href="detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
+								</h4>
+								<h5>${ producto.costo }</h5>
+								<a href="detalle-atraccion?nombreProducto=${ producto.nombre }"
+									class="btn btn-success rounded" role="button">Ver</a>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">${ producto.tipoDeAtraccion }</small>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
     </main>
 
     <footer>
