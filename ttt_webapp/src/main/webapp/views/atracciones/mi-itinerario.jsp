@@ -38,33 +38,35 @@
 
         <div class="container text-center">
             <div class="table-responsive">
-                <table class="table table-dark table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${ itinerario }" var="producto">
+            	<c:if test="${itinerario != null}">									
+	                <table class="table table-dark table-striped table-hover">
+	                    <thead>
 	                        <tr>
-	                            <td><c:out value="${ producto.nombre }"></c:out></td>
-	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
-	                            <td><c:out value="${ producto.costo }"></c:out></td>
-	                            <td><img class="align-self-center" id="imagen-lista"
-	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
-	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
-	                            </td>
-	                            <td>
-		                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
-	                            </td>	                            
+	                            <th scope="col">Nombre</th>
+	                            <th scope="col">Tipo</th>
+	                            <th scope="col">Precio</th>
+	                            <th scope="col">Imagen</th>
+	                            <th scope="col">Acción</th>
 	                        </tr>
-	                    </c:forEach>
-                    </tbody>
-                </table>
+	                    </thead>
+	                    <tbody>
+	                    	<c:forEach items="${ itinerario }" var="producto">
+		                        <tr>
+		                            <td><c:out value="${ producto.nombre }"></c:out></td>
+		                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
+		                            <td><c:out value="${ producto.costo }"></c:out></td>
+		                            <td><img class="align-self-center" id="imagen-lista"
+		                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
+		                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
+		                            </td>
+		                            <td>
+			                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
+		                            </td>	                            
+		                        </tr>
+		                    </c:forEach>
+	                    </tbody>
+	                </table>
+                </c:if>
             </div>
         </div>
         <div id="contenedor-form" class="container my-5 text-center p-5">			
