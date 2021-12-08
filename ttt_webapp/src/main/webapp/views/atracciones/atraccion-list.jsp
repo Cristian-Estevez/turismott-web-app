@@ -15,7 +15,6 @@
     <header>
         <jsp:include page="/partials/nav-bar.jsp"></jsp:include>
 		<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
-
     </header>
 
     <main>
