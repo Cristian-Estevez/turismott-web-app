@@ -25,8 +25,8 @@ public class ProductoService {
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		
-		productos.addAll(atracciones);
 		productos.addAll(promociones);
+		productos.addAll(atracciones);		
 		
 		this.cargarItinerario(usuario, atracciones, promociones);
 		
@@ -37,6 +37,21 @@ public class ProductoService {
 		productosParaOfertar.sort(new ProductosPorPreferencia(usuario.getTipoAtraccionFavorita()));
 		
 		return productosParaOfertar;
+	}
+
+	public ArrayList<Producto> getAll() {
+		AtraccionDAO aDAO = new AtraccionDAO();
+		ArrayList<Atraccion> atracciones = aDAO.getAll();
+		
+		PromocionDAO pDAO = new PromocionDAO();
+		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		
+		productos.addAll(promociones);
+		productos.addAll(atracciones);		
+		
+		return productos;
 	}
 
 	private void cargarItinerario(Usuario usuario, ArrayList<Atraccion> atracciones, ArrayList<Promocion> promociones) {
@@ -85,5 +100,19 @@ public class ProductoService {
 			}
 		}
 		return productosCopy;		
+	}
+
+	public Producto obtenerProductoPorNombre(String nombreProducto) {
+		ArrayList<Producto> productos = this.getAll();
+
+		Producto productoAObtener = null;
+		
+		for (Producto unProducto : productos) {
+			if(unProducto.getNombre().equalsIgnoreCase(nombreProducto)) {
+				productoAObtener = unProducto;
+			}
+		}
+		
+		return productoAObtener;
 	}
 }

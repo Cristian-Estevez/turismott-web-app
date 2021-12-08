@@ -84,9 +84,9 @@
 				</div>
 
 			</form>
-
-			<form class="row m-2 pt-2" action="" method="post">
-				<div class="col">
+			
+			<form class="row m-2 pt-2" action="login">
+				<div class="col">				
 					<button type="submit"
 						class="form-control btn btn-secondary border border-dark">Ingresar
 						sin Identificarse</button>

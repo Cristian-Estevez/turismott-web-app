@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
 			req.getSession().setAttribute("productos", productos);
+			
 			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 		} else {
 			req.setAttribute("flash", "Nombre de usuario incorrecto");
@@ -51,11 +52,11 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getSession().removeAttribute("flash");
 		
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/login.jsp");
-		dispatcher.forward(req, resp);
+		ArrayList<Producto> productos = productoService.getAll();
+		
+		req.getSession().setAttribute("productos", productos);
+		resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 	}
 
 }

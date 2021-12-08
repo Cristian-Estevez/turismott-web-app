@@ -42,7 +42,7 @@ public class ComprarProductoServlet extends HttpServlet {
 		ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
 		req.getSession().setAttribute("productos", productos);
 		req.getSession().setAttribute("usuario", usuario2);
-		req.getSession().setAttribute("flash", "Gracias por su compra.");
+		req.setAttribute("flash", "Gracias por su compra.");
 		
 		RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/views/atracciones/atraccion-list.jsp");
 		dispatcher.forward(req, resp);
