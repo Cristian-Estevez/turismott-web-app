@@ -25,8 +25,8 @@ public class ProductoService {
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		
-		productos.addAll(atracciones);
 		productos.addAll(promociones);
+		productos.addAll(atracciones);		
 		
 		this.cargarItinerario(usuario, atracciones, promociones);
 		
@@ -48,8 +48,8 @@ public class ProductoService {
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		
-		productos.addAll(atracciones);
 		productos.addAll(promociones);
+		productos.addAll(atracciones);		
 		
 		return productos;
 	}

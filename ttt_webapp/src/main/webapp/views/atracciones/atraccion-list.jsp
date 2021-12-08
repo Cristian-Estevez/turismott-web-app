@@ -21,10 +21,22 @@
     <main>
         <div class="container-fluid text-center">
             <h2 id="titulo" class="es-logo my-5">Nuestros Productos</h2>
-            <p id="membrete" class="p-4 bg-light">
-                Hemos seleccionado estos productos de acuerdo con tus preferencias. <br>
-                Esperamos que te gusten...
-            </p>
+            
+            <c:choose>
+            	<c:when test="${ usuario != null }">
+		            <p id="membrete" class="p-4 bg-light">
+		                Hola <c:out value="${usuario.nombre}"></c:out> }. Hemos seleccionado estos productos de acuerdo con tus preferencias. <br>
+		                Esperamos que te gusten...
+		            </p>
+	            </c:when>
+	            <c:otherwise>
+	            	<p id="membrete" class="p-4 bg-light">
+		                Bienvenido. Esperamos que te interesen nuestros productos. Si es así no dudes en 
+		                contactarnos.
+		            </p>
+	            </c:otherwise>
+	        </c:choose>
+	            
             <c:if test="${flash != null}">
 				<div class="alert alert-danger">
 					<p>
@@ -57,17 +69,7 @@
 	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
 	                            </td>
 	                            <td>
-	                            <c:choose>
-									<c:when
-										test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
-										<a href="comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
-											class="btn btn-success rounded" role="button">Comprar</a>
-									</c:when>
-									<c:otherwise>
-										<a href="#" class="btn btn-secondary rounded disabled"
-											role="button">Comprar</a>
-									</c:otherwise>
-								</c:choose>
+		                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
 	                            </td>	                            
 	                        </tr>
 	                    </c:forEach>
