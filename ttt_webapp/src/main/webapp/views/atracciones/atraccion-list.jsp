@@ -25,7 +25,8 @@
             <c:choose>
             	<c:when test="${ usuario != null }">
 		            <p id="membrete" class="p-4 bg-light">
-		                Hola <c:out value="${usuario.nombre}"></c:out> }. Hemos seleccionado estos productos de acuerdo con tus preferencias. <br>
+		                Hola <span style="text-transform:capitalize;"><c:out value="${usuario.nombre}"></c:out></span>.
+		                 Hemos seleccionado estos productos de acuerdo con tus preferencias. <br>
 		                Esperamos que te gusten...
 		            </p>
 	            </c:when>
@@ -76,7 +77,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </main>
 
