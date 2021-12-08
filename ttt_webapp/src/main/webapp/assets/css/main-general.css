@@ -24,3 +24,11 @@ main{
     padding-top: 1rem;
     padding-bottom: 3rem;
 }
+
+.botonera-admin a {
+    color: inherit !important;    
+}
+
+.botonera-admin a:hover {
+	color: rgb(158, 155, 155) !important;
+}
