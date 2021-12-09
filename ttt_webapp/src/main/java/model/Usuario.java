@@ -23,6 +23,7 @@ public class Usuario {
 		this.monedasDeOro = monedasDeOro;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
+		this.esAdmin = esAdmin;
 	}
 	
 	public void comprarProducto(Producto producto) {

@@ -34,13 +34,22 @@ public class LoginServlet extends HttpServlet {
 		String nombreUsuario = req.getParameter("nombreUsuario");
 		
 		Usuario usuario = loginService.login(nombreUsuario);
-		ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
+		
 		
 		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("productos", productos);
 			
-			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+			if (!usuario.esAdmin()) {
+				ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
+				req.getSession().setAttribute("productos", productos);			
+				resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+			} else {
+				ArrayList<Producto> productos = productoService.getAll();
+				req.getSession().setAttribute("productos", productos);
+				resp.sendRedirect("views/admin/productos-list-admin.jsp");
+			}
+			
+			
 		} else {
 			req.setAttribute("flash", "Nombre de usuario incorrecto");
 			
