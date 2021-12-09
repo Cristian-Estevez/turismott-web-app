@@ -11,18 +11,21 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a href="atraccion-list.jsp" class="nav-link" href="#">Productos</a></li>
-				
-				<c:choose>
-					<c:when test="${usuario != null}">
-						<li class="nav-item"><a href="mi-itinerario" class="nav-link">Mi itinerario</a></li>
-					</c:when>
-					<c:otherwise>
-						<li class="nav-item"><a href="/ttt_webapp/login.jsp" class="nav-link">Ingresar</a></li>
-					</c:otherwise>
-				</c:choose>
-								
-				<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+			
+				<c:if test="${!usuario.esAdmin()}">
+					<li class="nav-item"><a href="atraccion-list.jsp" class="nav-link" href="#">Productos</a></li>					
+					
+					<c:choose>
+						<c:when test="${usuario != null}">
+							<li class="nav-item"><a href="mi-itinerario" class="nav-link">Mi itinerario</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a href="/ttt_webapp/login.jsp" class="nav-link">Ingresar</a></li>
+						</c:otherwise>
+					</c:choose>					
+									
+					<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+				</c:if>
 				<c:choose>
 					<c:when test="${usuario != null}">
 						<li class="nav-item"><a class="nav-link" href="/ttt_webapp/logout">Salir</a></li>

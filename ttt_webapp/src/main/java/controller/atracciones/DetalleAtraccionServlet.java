@@ -14,7 +14,7 @@ import model.Producto;
 import model.Usuario;
 import service.ProductoService;
 
-@WebServlet("/views/atracciones/detalle-atraccion")
+@WebServlet("/detalle-atraccion")
 public class DetalleAtraccionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5487492190189342772L;
@@ -43,11 +43,11 @@ public class DetalleAtraccionServlet extends HttpServlet {
 				// logica para mandar solo los productos que contiene la promo
 				ArrayList<Atraccion> atraccionesDeEstaPromocion = productoService.obtenerAtraccionesDeLaPromocion(productoAMostrar.getNombre());
 				req.getSession().setAttribute("atraccionesDeEstaPromocion", atraccionesDeEstaPromocion);
-				resp.sendRedirect("detalle-promocion.jsp");
+				resp.sendRedirect("/ttt_webapp/views/atracciones/detalle-promocion.jsp");
 				
 				
 			} else if (!productoAMostrar.esPromocion()) {
-				resp.sendRedirect("detalle-atraccion.jsp");
+				resp.sendRedirect("/ttt_webapp/views/atracciones/detalle-atraccion.jsp");
 			}
 		} else {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login");

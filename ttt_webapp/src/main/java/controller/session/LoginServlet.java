@@ -45,8 +45,8 @@ public class LoginServlet extends HttpServlet {
 				resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 			} else {
 				ArrayList<Producto> productos = productoService.getAll();
-				req.getSession().setAttribute("productos", productos);
-				resp.sendRedirect("views/admin/productos-list-admin.jsp");
+				req.getSession().setAttribute("todosLosProductos", productos);
+				resp.sendRedirect("views/admin/productos-list-admin.jsp");// cambiar a .do
 			}
 			
 			

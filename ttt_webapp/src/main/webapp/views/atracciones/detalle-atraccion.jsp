@@ -11,7 +11,14 @@
 <body>
 	<header>
         <jsp:include page="/partials/nav-bar.jsp"></jsp:include>
-		<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
+        <c:choose>
+			<c:when test="${!usuario.esAdmin()}">
+				<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="/partials/botonera-admin.jsp"></jsp:include>
+			</c:otherwise>
+		</c:choose>
     </header>
     <main>
 
