@@ -2,7 +2,16 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 	<div class="container-fluid">
-		<a class="navbar-brand es-logo" href="atraccion-list.jsp">Tierra Media</a>
+	
+		<c:choose> 
+			<c:when test="${!usuario.esAdmin()}">
+				<a class="navbar-brand es-logo" method="post" href="<c:out value="atraccion-list.jsp"></c:out>">Tierra Media</a>
+			</c:when>
+			<c:otherwise>
+				<a class="navbar-brand es-logo" href="#" >Tierra Media</a>
+			</c:otherwise>
+		</c:choose>
+		
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
