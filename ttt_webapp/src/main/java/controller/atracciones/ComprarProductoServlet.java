@@ -15,7 +15,7 @@ import service.ComprarProductoService;
 import service.ProductoService;
 import service.UsuarioService;
 
-@WebServlet("/views/atracciones/comprar.do")
+@WebServlet("/atracciones/comprar.do")
 public class ComprarProductoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4672823548806279662L;

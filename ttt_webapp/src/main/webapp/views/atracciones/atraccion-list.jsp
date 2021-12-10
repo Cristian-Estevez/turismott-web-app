@@ -14,7 +14,14 @@
 <body>
     <header>
         <jsp:include page="/partials/nav-bar.jsp"></jsp:include>
-		<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
+		<c:choose>
+			<c:when test="${!usuario.esAdmin()}">
+				<jsp:include page="/partials/barra-estado-usuario.jsp"></jsp:include>
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="/partials/botonera-admin.jsp"></jsp:include>
+			</c:otherwise>
+		</c:choose>
     </header>
 
     <main>
@@ -87,7 +94,7 @@
 									<a class="text-decoration-none" href="detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
 								</h4>
 								<h5>${ producto.costo }</h5>
-								<a href="detalle-atraccion?nombreProducto=${ producto.nombre }"
+								<a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }"
 									class="btn btn-success rounded" role="button">Ver</a>
 							</div>
 							<div class="card-footer">

@@ -34,13 +34,21 @@ public class LoginServlet extends HttpServlet {
 		String nombreUsuario = req.getParameter("nombreUsuario");
 		
 		Usuario usuario = loginService.login(nombreUsuario);
-		ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
+		
 		
 		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("productos", productos);
 			
-			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+			if (!usuario.esAdmin()) {
+				ArrayList<Producto> productos = productoService.listarProductosPorPreferencia(usuario);
+				req.getSession().setAttribute("productos", productos);			
+				resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+			} else {
+				ArrayList<Producto> productos = productoService.getAll();
+				req.getSession().setAttribute("todosLosProductos", productos);
+				resp.sendRedirect("views/admin/productos-list-admin.jsp");// cambiar a .do
+			}			
+			
 		} else {
 			req.setAttribute("flash", "Nombre de usuario incorrecto");
 			
@@ -53,10 +61,26 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		ArrayList<Producto> productos = productoService.getAll();
+		ArrayList<Producto> productos;
 		
-		req.getSession().setAttribute("productos", productos);
-		resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+				
+		if (!(usuario == null) && usuario.esAdmin()) {
+			req.getSession().setAttribute("usuario", usuario);
+			productos = productoService.getAll();
+			req.getSession().setAttribute("productos", productos);
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher("/views/admin/productos-list-admin.jsp");
+			dispatcher.forward(req, resp);
+		} else if (!(usuario == null)&& !usuario.esAdmin()) {
+			productos = productoService.listarProductosPorPreferencia(usuario);
+			req.getSession().setAttribute("productos", productos);
+			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+		} else {
+			productos = productoService.getAll();
+			req.getSession().setAttribute("productos", productos);
+			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
+		}
 	}
 
 }
