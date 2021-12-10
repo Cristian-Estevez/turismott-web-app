@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import model.Atraccion;
 import model.Producto;
 import model.Promocion;
+import model.TipoDeAtraccion;
 import model.Usuario;
 import persistence.AtraccionDAO;
 import persistence.PromocionDAO;
@@ -188,4 +189,16 @@ public class ProductoService {
 		}
 		return atraccionesDeEstaPromocion;
 	}
+	
+	public Atraccion crearAtraccion(String nombre, double costo, double tiempoDeDuracion,
+			int cupo, TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen) {
+		Atraccion atraccion = new Atraccion(-1, nombre, costo, tiempoDeDuracion, cupo, 
+				tipoDeAtraccion, descripcion, urlImagen);
+		if (atraccion.esValida()) {
+			// TODO DAO guardar la atraccion
+		}
+		
+		return atraccion;
+	}
+
 }

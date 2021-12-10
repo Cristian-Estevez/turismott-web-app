@@ -50,5 +50,8 @@
             </div>            
         </div>		
 	</main>
+	<footer>
+        <jsp:include page="/partials/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>
