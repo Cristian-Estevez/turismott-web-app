@@ -94,7 +94,7 @@
 									<a class="text-decoration-none" href="detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
 								</h4>
 								<h5>${ producto.costo }</h5>
-								<a href="/ttt_webapp/detalle-atraccion?nombreProducto=${ producto.nombre }"
+								<a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }"
 									class="btn btn-success rounded" role="button">Ver</a>
 							</div>
 							<div class="card-footer">

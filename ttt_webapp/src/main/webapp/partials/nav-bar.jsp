@@ -5,7 +5,7 @@
 	
 		<c:choose> 
 			<c:when test="${!usuario.esAdmin()}">
-				<a class="navbar-brand es-logo" method="post" href="<c:out value="atraccion-list.jsp"></c:out>">Tierra Media</a>
+				<a class="navbar-brand es-logo" href="/ttt_webapp/login">Tierra Media</a>
 			</c:when>
 			<c:otherwise>
 				<a class="navbar-brand es-logo" href="#" >Tierra Media</a>
@@ -22,11 +22,11 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			
 				<c:if test="${!usuario.esAdmin()}">
-					<li class="nav-item"><a href="atraccion-list.jsp" class="nav-link" href="#">Productos</a></li>					
+					<li class="nav-item"><a href="/ttt_webapp/login" class="nav-link" href="#">Productos</a></li>					
 					
 					<c:choose>
 						<c:when test="${usuario != null}">
-							<li class="nav-item"><a href="mi-itinerario" class="nav-link">Mi itinerario</a></li>
+							<li class="nav-item"><a href="/ttt_webapp/atracciones/mi-itinerario.do" class="nav-link">Mi itinerario</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a href="/ttt_webapp/login.jsp" class="nav-link">Ingresar</a></li>

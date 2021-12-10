@@ -13,7 +13,7 @@ import model.Producto;
 import model.Usuario;
 import service.ProductoService;
 
-@WebServlet("/views/atracciones/mi-itinerario")
+@WebServlet("/atracciones/mi-itinerario.do")
 public class MiItinerarioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2333043905021501654L;
@@ -34,10 +34,9 @@ public class MiItinerarioServlet extends HttpServlet {
 		if (!productosComprados.isEmpty()) {
 			req.getSession().setAttribute("itinerario", productosComprados);
 			req.getSession().setAttribute("usuario", usuario);
-			resp.sendRedirect("mi-itinerario.jsp");
-		} else {
-			resp.sendRedirect("mi-itinerario.jsp");
-		}
-		
+		} 
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/views/atracciones/mi-itinerario.jsp");
+		dispatcher.forward(req, resp);
 	}
 }

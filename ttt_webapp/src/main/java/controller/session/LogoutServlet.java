@@ -19,6 +19,7 @@ public class LogoutServlet extends HttpServlet{
 		req.getSession().removeAttribute("usuario");
 		req.getSession().removeAttribute("itinerario");
 		req.getSession().removeAttribute("productos");
+		req.getSession().removeAttribute("todosLosProductos");
 		req.setAttribute("flash", "¡Hasta pronto! Gracias por su visita.");
 		
 		RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/login.jsp");

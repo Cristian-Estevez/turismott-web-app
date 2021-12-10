@@ -41,7 +41,7 @@
 	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
 	                            </td>
 	                            <td>
-		                            <a href="/ttt_webapp/detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
+		                            <a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
 	                            </td>	                            
 	                        </tr>
 	                    </c:forEach>
