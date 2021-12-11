@@ -197,4 +197,9 @@ public class ProductoService {
 		return atraccion;
 	}
 
+	public void eliminarAtraccion(String nombreAtraccion) {
+		// TODO eliminacion lógica
+		
+	}
+
 }

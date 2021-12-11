@@ -26,6 +26,7 @@ CREATE TABLE "usuario" (
 	"tiempo"	REAL NOT NULL,
 	"cantidad_monedas"	INTEGER NOT NULL,
 	"es_admin"	INTEGER NOT NULL DEFAULT 0,
+	"borrado"	INTEGER NOT NULL DEFAULT 0,
 	FOREIGN KEY("tipo_atraccion_favorita") REFERENCES "tipo_atraccion"("id"),
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
@@ -38,6 +39,7 @@ CREATE TABLE "atraccion" (
 	"tipo"	TEXT NOT NULL,
 	"descripcion"	TEXT NOT NULL DEFAULT ' ',
 	"url_imagen"	TEXT,
+	"borrado"	INTEGER NOT NULL DEFAULT 0,
 	FOREIGN KEY("tipo") REFERENCES "tipo_atraccion"("id"),
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
@@ -50,10 +52,11 @@ CREATE TABLE "promocion" (
 	"atraccion_id"	INTEGER,
 	"descripcion"	TEXT NOT NULL DEFAULT ' ',
 	"url_imagen"	TEXT,
+	"borrado"	INTEGER NOT NULL DEFAULT 0,
 	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("tipo_atraccion") REFERENCES "tipo_atraccion"("id"),
 	FOREIGN KEY("atraccion_id") REFERENCES "atraccion"("id"),
-	FOREIGN KEY("tipo_promocion") REFERENCES "tipo_promocion"("id")
+	FOREIGN KEY("tipo_promocion") REFERENCES "tipo_promocion"("id"),
+	FOREIGN KEY("tipo_atraccion") REFERENCES "tipo_atraccion"("id")
 );
 CREATE TABLE "atraccion_promocion" (
 	"id"	INTEGER,
