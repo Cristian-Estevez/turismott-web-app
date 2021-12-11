@@ -37,7 +37,7 @@
 		</div>
 		
 		<div class="container text-center">
-			<p class=" es-logo mt-4 p-4 border border-dark rounded-3 descripcion ">
+			<p class=" es-logo mt-4 p-4 rounded-3  bg-color-1 txt-color-5">
 				<c:out value="${producto.descripcion}"></c:out>
 			</p>
 		</div>
@@ -46,51 +46,22 @@
 			<h2 class="es-logo my-5"> Esta promo contiene las siguientes atracciones: </h2>
 		</div>
 		<div class="container text-center">
-            <%-- <div class="table-responsive">
-                <table class="table table-dark table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
-	                        <tr>
-	                            <td><c:out value="${ producto.nombre }"></c:out></td>
-	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
-	                            <td><c:out value="${ producto.costo }"></c:out></td>
-	                            <td><img class="align-self-center" id="imagen-lista"
-	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
-	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
-	                            </td>
-	                            <td>
-		                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
-	                            </td>	                            
-	                        </tr>
-	                    </c:forEach>
-                    </tbody>
-                </table>
-            </div> --%>
             <div class="row">
 				<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
 							<a href="#"><img class="card-img-top " height="300"
 								src="${ producto.urlImagen }" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a class="text-decoration-none" href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
+							<div class="card-body bg-color-1 ">
+								<h4 class="card-title ">
+									<a class="text-decoration-none txt-color-5 " href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
 								</h4>
-								<h5>${ producto.costo }</h5>
+								<h5 class=" txt-color-5 ">${ producto.costo }</h5>
 								<a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }"
 									class="btn btn-success rounded" role="button">Ver</a>
 							</div>
-							<div class="card-footer">
-								<small class="text-muted">${ producto.tipoDeAtraccion }</small>
+							<div class="card-footer bg-color-2">
+								<small class="txt-color-4">${ producto.tipoDeAtraccion }</small>
 							</div>
 						</div>
 					</div>

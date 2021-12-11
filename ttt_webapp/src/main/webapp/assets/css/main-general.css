@@ -32,7 +32,33 @@ main{
 .botonera-admin a:hover {
 	color: rgb(158, 155, 155) !important;
 }
-.descripcion {
+.bg-color-1 {
 	background-color: #280004;
-	color: #ccc9a1;
+}
+.bg-color-2 {
+	background-color: #4C230A;
+}
+.bg-color-3 {
+	background-color: #A53F2B;
+}
+.bg-color-4 {
+	background-color: #F0FFCE;
+}
+.bg-color-5 {
+	background-color: #CCC9A1;
+}
+.txt-color-1 {
+	color: #280004;
+}
+.txt-color-2 {
+	color: #4C230A;
+}
+.txt-color-3 {
+	color: #A53F2B;
+}
+.txt-color-4 {
+	color: #F0FFCE;
+}
+.txt-color-5 {
+	color: #CCC9A1;
 }
