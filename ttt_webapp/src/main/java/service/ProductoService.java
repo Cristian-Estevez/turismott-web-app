@@ -17,11 +17,12 @@ import utils.ProductosPorPreferencia;
 
 public class ProductoService {
 	
+	private AtraccionDAO aDAO = new AtraccionDAO();
+	private PromocionDAO pDAO = new PromocionDAO();
+	
 	public ArrayList<Producto> listarProductosPorPreferencia(Usuario usuario){
-		AtraccionDAO aDAO = new AtraccionDAO();
 		ArrayList<Atraccion> atracciones = aDAO.getAll();
 		
-		PromocionDAO pDAO = new PromocionDAO();
 		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
@@ -41,10 +42,8 @@ public class ProductoService {
 	}
 
 	public ArrayList<Producto> getAll() {
-		AtraccionDAO aDAO = new AtraccionDAO();
 		ArrayList<Atraccion> atracciones = aDAO.getAll();
 		
-		PromocionDAO pDAO = new PromocionDAO();
 		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
@@ -56,10 +55,8 @@ public class ProductoService {
 	}
 
 	public ArrayList<Producto> obtenerItinerario(Usuario usuario) {
-		AtraccionDAO aDAO = new AtraccionDAO();
 		ArrayList<Atraccion> atracciones = aDAO.getAll();
 		
-		PromocionDAO pDAO = new PromocionDAO();
 		ArrayList<Promocion> promociones = pDAO.getAll(atracciones);
 		
 		return this.crearItinerario(usuario, atracciones, promociones);
@@ -195,9 +192,8 @@ public class ProductoService {
 		Atraccion atraccion = new Atraccion(-1, nombre, costo, tiempoDeDuracion, cupo, 
 				tipoDeAtraccion, descripcion, urlImagen);
 		if (atraccion.esValida()) {
-			// TODO DAO guardar la atraccion
-		}
-		
+			aDAO.crearAtraccion(atraccion);
+		}		
 		return atraccion;
 	}
 
