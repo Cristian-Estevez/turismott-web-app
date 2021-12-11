@@ -37,7 +37,7 @@
 		</div>
 		
 		<div class="container-fluid text-center">
-			<p>
+			<p class=" es-logo mt-4 p-4 border border-dark rounded-3 descripcion ">
 				<c:out value="${producto.descripcion}"></c:out>
 			</p>
 		</div>

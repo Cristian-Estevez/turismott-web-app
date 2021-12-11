@@ -62,7 +62,7 @@
 								src="${ producto.urlImagen }" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a class="text-decoration-none" href="detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
+									<a class="text-decoration-none" href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
 								</h4>
 								<h5>${ producto.costo }</h5>
 								<a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }"
