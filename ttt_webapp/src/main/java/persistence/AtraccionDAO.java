@@ -37,6 +37,48 @@ public class AtraccionDAO {
 				infoAtraccion.getString(7), infoAtraccion.getString(8));
 	}
 	
+	/**
+	 * Guarda atracción en Base de Datos
+	 * @param atraccion
+	 */
+	public void crearAtraccion(Atraccion atraccion) {
+		String query = "INSERT INTO atraccion (nombre, costo, duracion, cupo, tipo, descripcion, url_imagen) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		
+		int tipoDeAtraccionId = getTipoDeAtraccionId(atraccion.getTipoDeAtraccion());
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, atraccion.getNombre());
+			statement.setDouble(2, atraccion.getCosto());
+			statement.setDouble(3, atraccion.getTiempoDeDuracion());
+			statement.setInt(4, atraccion.getCupo());
+			statement.setInt(5, tipoDeAtraccionId);
+			statement.setString(6, atraccion.getDescripcion());
+			statement.setString(7, atraccion.getUrlImagen());
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("No se pudo guardar la atracción en la base de datos");
+		}		
+	}
+	
+	private int getTipoDeAtraccionId(TipoDeAtraccion tipoDeAtraccion) {
+		String query = "SELECT tipo_atraccion.id FROM tipo_atraccion WHERE tipo_atraccion.nombre = ?;";
+		int index = -1;
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, tipoDeAtraccion.toString());
+			ResultSet  resultado = statement.executeQuery();
+			if (resultado.next()) {
+				index = resultado.getInt(1);
+			}
+		} catch (Exception e) {
+			System.err.println("No se pudo obtener el id de el tipo de atraccion" + tipoDeAtraccion.toString());
+		}
+		
+		return index;
+	}
+	
 	public void update(Atraccion atraccion) {
 		String query = "UPDATE atraccion SET cupo = ? WHERE atraccion.id = ?";
 		String cupo = Integer.toString(atraccion.getLugaresDisponibles());
