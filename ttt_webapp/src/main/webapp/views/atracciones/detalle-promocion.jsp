@@ -36,14 +36,14 @@
 			</div>			
 		</div>
 		
-		<div class="container-fluid text-center">
-			<p>
+		<div class="container text-center">
+			<p class=" es-logo mt-4 p-4 border border-dark rounded-3 descripcion ">
 				<c:out value="${producto.descripcion}"></c:out>
 			</p>
 		</div>
 		
 		<div class="container-fluid text-center">
-			<h2 class="es-logo my-5">Esta promo contiene las siguientes atracciones: </h2>
+			<h2 class="es-logo my-5"> Esta promo contiene las siguientes atracciones: </h2>
 		</div>
 		<div class="container text-center">
             <%-- <div class="table-responsive">

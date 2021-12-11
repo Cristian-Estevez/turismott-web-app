@@ -32,3 +32,7 @@ main{
 .botonera-admin a:hover {
 	color: rgb(158, 155, 155) !important;
 }
+.descripcion {
+	background-color: #280004;
+	color: #ccc9a1;
+}
