@@ -55,7 +55,7 @@ public class CrearAtraccionServlet extends HttpServlet {
 				cupo, tipoDeAtraccion, descripcion, urlImagen);
 		
 		if (tmp_atraccion.esValida()) {			
-			ArrayList<Producto> productos = productoService.getAll();
+			ArrayList<Producto> productos = productoService.getAllNonDeleted();
 			req.getSession().setAttribute("todosLosProductos", productos);
 			req.setAttribute("flash", "Se ha creado una nueva atracción correctamente.");
 			RequestDispatcher dispatcher = getServletContext()

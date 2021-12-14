@@ -45,36 +45,7 @@
 		<div class="container-fluid text-center">
 			<h2 class="es-logo my-5">Esta promo contiene las siguientes atracciones: </h2>
 		</div>
-		<div class="container text-center">
-            <%-- <div class="table-responsive">
-                <table class="table table-dark table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
-	                        <tr>
-	                            <td><c:out value="${ producto.nombre }"></c:out></td>
-	                            <td style="text-transform: capitalize;"><c:out value="${ producto.tipoDeAtraccion }"></c:out></td>
-	                            <td><c:out value="${ producto.costo }"></c:out></td>
-	                            <td><img class="align-self-center" id="imagen-lista"
-	                                    src="<c:out value="${ producto.urlImagen }"></c:out>"
-	                                    class="d-block" alt="Imagen de <c:out value="${ producto.nombre }"></c:out>"/>
-	                            </td>
-	                            <td>
-		                            <a href="detalle-atraccion?nombreProducto=${ producto.nombre }" class="btn btn-success rounded" role="button">Ver</a>
-	                            </td>	                            
-	                        </tr>
-	                    </c:forEach>
-                    </tbody>
-                </table>
-            </div> --%>
+		<div class="container text-center">   
             <div class="row">
 				<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
 					<div class="col-lg-4 col-md-6 mb-4">
@@ -103,7 +74,7 @@
 			<form class="row m-2 pb-2">
 				<c:choose>
 					<c:when
-						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
+						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar() && !usuario.yaCompro(producto)}">
 						<a href="/ttt_webapp/atracciones/comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
 							class="btn btn-success rounded" role="button">Comprar</a>
 					</c:when>

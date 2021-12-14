@@ -45,13 +45,13 @@
 		<div id="contenedor-form" class="container my-5 text-center p-5">			
 			<form class="row m-2 pb-2">
 				<c:choose>
-					<c:when test="${usuario.esAdmin()}">
+					<c:when test="${usuario.esAdmin() && !producto.borrado()}">
 						<a href="/ttt_webapp/admin/borrar-atraccion.ad?nombreAtraccion=${producto.nombre}"
 							class="btn btn-danger rounded" role="button">Eliminar</a>
 					</c:when>
 						
 					<c:when
-						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
+						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar() && !usuario.yaCompro(producto)}">
 						<a href="/ttt_webapp/atracciones/comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
 							class="btn btn-success rounded" role="button">Comprar</a>
 					</c:when>

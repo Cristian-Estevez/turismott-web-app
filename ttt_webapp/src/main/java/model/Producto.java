@@ -10,17 +10,20 @@ public abstract class Producto {
 	private String descripcion;
 	private String urlImagen;
 	private double costo;
+	private boolean borrado;
 	
 	public Producto(int numeroId, String nombre, 
 			TipoDeAtraccion tipoDeAtraccion, 
-			String descripcion, String urlImagen) {
+			String descripcion, String urlImagen, boolean borrado) {
 		this.numeroId = numeroId;
 		this.nombre = nombre;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 		this.descripcion = descripcion;
 		this.urlImagen = urlImagen;
-		
+		this.borrado = borrado;
 	}
+	
+	public boolean borrado() { return borrado;	}
 	
 	public double getCosto() { return costo; }
 	

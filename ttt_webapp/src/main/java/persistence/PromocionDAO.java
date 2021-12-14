@@ -19,7 +19,7 @@ public class PromocionDAO {
 
 	public ArrayList<Promocion> getAll(ArrayList<Atraccion> atracciones){
 		
-		String queryPromociones = "SELECT tipo_promocion.nombre AS tipo_de_promocion, promocion.id AS id, promocion.nombre, promocion.descuento_costo, tipo_atraccion.nombre AS tipo_de_atraccion, atraccion.nombre AS atraccion_bonificada, promocion.descripcion, promocion.url_imagen FROM promocion JOIN tipo_promocion ON tipo_promocion.id = promocion.tipo_promocion JOIN tipo_atraccion ON tipo_atraccion.id = promocion.tipo_atraccion LEFT JOIN atraccion ON atraccion.id = promocion.atraccion_id;";
+		String queryPromociones = "SELECT tipo_promocion.nombre AS tipo_de_promocion, promocion.id AS id, promocion.nombre, promocion.descuento_costo, tipo_atraccion.nombre AS tipo_de_atraccion, atraccion.nombre AS atraccion_bonificada, promocion.descripcion, promocion.url_imagen, promocion.borrado FROM promocion JOIN tipo_promocion ON tipo_promocion.id = promocion.tipo_promocion JOIN tipo_atraccion ON tipo_atraccion.id = promocion.tipo_atraccion LEFT JOIN atraccion ON atraccion.id = promocion.atraccion_id;";
 		String queryAtraccionesIncluidas = "SELECT atraccion_promocion.atraccion_id FROM atraccion_promocion WHERE atraccion_promocion.promocion_id = ?;";
 		
 		ArrayList<Promocion> promociones = new ArrayList<Promocion>();
@@ -72,17 +72,17 @@ public class PromocionDAO {
 	
 	private Promocion instanciarPromocionPorcentual(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionPorcentual(infoPromocion.getInt(2), infoPromocion.getString(3), TipoDeAtraccion.valueOf(infoPromocion.getString(5)),
-				infoPromocion.getDouble(4), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
+				infoPromocion.getDouble(4), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas, infoPromocion.getBoolean(9));
 	}
 
 	private Promocion instanciarPromocionAxB(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionAxB(infoPromocion.getInt(2), infoPromocion.getString(3), 
-				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
+				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas, infoPromocion.getBoolean(9));
 	}
 
 	private Promocion instanciarPromocionAbsoluta(ResultSet infoPromocion, ArrayList<Atraccion> atraccionesIncluidas) throws SQLException {
 		return new PromocionAbsoluta(infoPromocion.getInt(2), infoPromocion.getString(3), infoPromocion.getDouble(4), 
-				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas);
+				TipoDeAtraccion.valueOf(infoPromocion.getString(5)), infoPromocion.getString(7), infoPromocion.getString(8), atraccionesIncluidas, infoPromocion.getBoolean(9));
 	}
 	
 	public void update(Producto producto) {

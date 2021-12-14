@@ -45,15 +45,15 @@
 	        </c:choose>
 
         </div>
-        
-        <c:if test="${flash != null}">
-				<div class="alert alert-danger">
-					<p>
-						<c:out value="${flash}" />						
-					</p>
-				</div>
-		</c:if>
-
+        <div class="container text-center">
+	        <c:if test="${flash != null}">
+					<div class="alert alert-success">
+						<p>
+							<c:out value="${flash}" />						
+						</p>
+					</div>
+			</c:if>
+		</div>
         <div class="container text-center">
 			<div class="row">
 				<c:forEach items="${ productos }" var="producto">

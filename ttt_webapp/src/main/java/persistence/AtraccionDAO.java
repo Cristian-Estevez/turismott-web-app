@@ -16,7 +16,7 @@ public class AtraccionDAO {
 		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 		
 		try {
-			String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo;";
+			String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen, atraccion.borrado FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo;";
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet  resultado = statement.executeQuery();
@@ -34,7 +34,7 @@ public class AtraccionDAO {
 	private Atraccion instanciarAtraccion(ResultSet infoAtraccion) throws SQLException {
 		return new Atraccion(infoAtraccion.getInt(1), infoAtraccion.getString(2), infoAtraccion.getDouble(3), 
 				infoAtraccion.getDouble(4), infoAtraccion.getInt(5), TipoDeAtraccion.valueOf(infoAtraccion.getString(6)), 
-				infoAtraccion.getString(7), infoAtraccion.getString(8));
+				infoAtraccion.getString(7), infoAtraccion.getString(8), infoAtraccion.getBoolean(9));
 	}
 	
 	/**

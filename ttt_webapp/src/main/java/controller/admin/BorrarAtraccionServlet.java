@@ -1,6 +1,7 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -8,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Producto;
 import service.ProductoService;
 
 @WebServlet("/admin/borrar-atraccion.ad")
@@ -27,6 +29,8 @@ public class BorrarAtraccionServlet extends HttpServlet {
 		String nombreAtraccion = req.getParameter("nombreAtraccion");		
 		productoService.eliminarAtraccion(nombreAtraccion);		
 		req.setAttribute("flash", nombreAtraccion + " fue eliminada correctamente.");
+		ArrayList<Producto> productosDisponibles = productoService.getAllNonDeleted();
+		req.getSession().setAttribute("todosLosProductos", productosDisponibles);
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/views/admin/productos-list-admin.jsp");
 		dispatcher.forward(req, resp);

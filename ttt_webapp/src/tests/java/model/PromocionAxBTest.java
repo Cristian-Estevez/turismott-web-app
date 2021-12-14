@@ -19,14 +19,14 @@ public class PromocionAxBTest {
 	@Before
 	public void setup() {
 		
-		minasDeTirith = new Atraccion(2, "Minas de Tirith", 5, 2.5, 25, TipoDeAtraccion.PAISAJE, null, null);
-		abismoDeHelm = new Atraccion(5, "Abismo de Helm", 5, 2, 15, TipoDeAtraccion.PAISAJE, null, null);
-		erebor = new Atraccion(7, "Erebor", 12, 3, 32, TipoDeAtraccion.PAISAJE, null, null);
+		minasDeTirith = new Atraccion(2, "Minas de Tirith", 5, 2.5, 25, TipoDeAtraccion.PAISAJE, null, null, false);
+		abismoDeHelm = new Atraccion(5, "Abismo de Helm", 5, 2, 15, TipoDeAtraccion.PAISAJE, null, null, false);
+		erebor = new Atraccion(7, "Erebor", 12, 3, 32, TipoDeAtraccion.PAISAJE, null, null, false);
 		
-		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null);
-		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null);
-		delicatessen = new Atraccion(0, "Una con poco cupo", 3, 1, 2, TipoDeAtraccion.DEGUSTACION, null, null);
-		cataratasDeChocolate = new Atraccion(0, "Cataratas de Chocolate", 13, 3, 10, TipoDeAtraccion.DEGUSTACION, null, null);
+		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		delicatessen = new Atraccion(0, "Una con poco cupo", 3, 1, 2, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		cataratasDeChocolate = new Atraccion(0, "Cataratas de Chocolate", 13, 3, 10, TipoDeAtraccion.DEGUSTACION, null, null, false);
 
 		
 		listaDeAtraccionesA = new ArrayList<Atraccion>();
@@ -40,9 +40,9 @@ public class PromocionAxBTest {
 		listaDeAtraccionesB.add(delicatessen);
 		listaDeAtraccionesB.add(cataratasDeChocolate);
 		
-		packDegustacion = new PromocionAxB(4,"Pack Degustacion", TipoDeAtraccion.DEGUSTACION, null, null, listaDeAtraccionesB);
+		packDegustacion = new PromocionAxB(4,"Pack Degustacion", TipoDeAtraccion.DEGUSTACION, null, null, listaDeAtraccionesB, false);
 		
-		packPaisajes = new PromocionAxB(5,"Pack Paisajes", TipoDeAtraccion.PAISAJE, null, null, listaDeAtraccionesA);
+		packPaisajes = new PromocionAxB(5,"Pack Paisajes", TipoDeAtraccion.PAISAJE, null, null, listaDeAtraccionesA, false);
 	}
 	
 	@Test

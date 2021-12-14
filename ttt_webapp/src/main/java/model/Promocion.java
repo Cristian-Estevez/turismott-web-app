@@ -11,8 +11,8 @@ public abstract class Promocion extends Producto {
 	protected double costo;
 
 	public Promocion(int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion, 
-			String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas) {
-		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen);
+			String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas, boolean borrado) {
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, borrado);
 		this.atraccionesIncluidas = atraccionesIncluidas;
 		this.setTiempoDeDuracion();
 	}

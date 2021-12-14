@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 				req.getSession().setAttribute("productos", productos);			
 				resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 			} else {
-				ArrayList<Producto> productos = productoService.getAll();
+				ArrayList<Producto> productos = productoService.getAllNonDeleted();
 				req.getSession().setAttribute("todosLosProductos", productos);
 				resp.sendRedirect("views/admin/productos-list-admin.jsp");// cambiar a .do
 			}			
@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 				
 		if (!(usuario == null) && usuario.esAdmin()) {
 			req.getSession().setAttribute("usuario", usuario);
-			productos = productoService.getAll();
+			productos = productoService.getAllNonDeleted();
 			req.getSession().setAttribute("productos", productos);
 			RequestDispatcher dispatcher = getServletContext()
 					.getRequestDispatcher("/views/admin/productos-list-admin.jsp");
@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 			req.getSession().setAttribute("productos", productos);
 			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 		} else {
-			productos = productoService.getAll();
+			productos = productoService.getAllNonDeleted();
 			req.getSession().setAttribute("productos", productos);
 			resp.sendRedirect("views/atracciones/atraccion-list.jsp");
 		}

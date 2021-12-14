@@ -11,8 +11,8 @@ public class Atraccion extends Producto {
 	private HashMap<String, String> errores;
 
 	public Atraccion(int numeroId, String nombre, double costo, double tiempoDeDuracion,
-			int cupo, TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen) {
-		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen);
+			int cupo, TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen, boolean borrado) {
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, borrado);
 		this.cupo = cupo;
 		this.tiempoDeDuracion = tiempoDeDuracion;
 		this.setCosto(costo);
