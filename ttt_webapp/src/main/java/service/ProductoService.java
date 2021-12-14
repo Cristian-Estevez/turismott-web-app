@@ -198,7 +198,7 @@ public class ProductoService {
 	}
 
 	public void eliminarAtraccion(String nombreAtraccion) {
-		// TODO eliminacion lógica
+		aDAO.eliminarAtraccion(nombreAtraccion);
 		
 	}
 

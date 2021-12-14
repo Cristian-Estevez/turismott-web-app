@@ -57,6 +57,7 @@ public class CrearAtraccionServlet extends HttpServlet {
 		if (tmp_atraccion.esValida()) {			
 			ArrayList<Producto> productos = productoService.getAll();
 			req.getSession().setAttribute("todosLosProductos", productos);
+			req.setAttribute("flash", "Se ha creado una nueva atracción correctamente.");
 			RequestDispatcher dispatcher = getServletContext()
 					.getRequestDispatcher("/views/admin/productos-list-admin.jsp");
 			dispatcher.forward(req, resp);

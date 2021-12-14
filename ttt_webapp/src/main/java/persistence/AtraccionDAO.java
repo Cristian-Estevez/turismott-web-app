@@ -94,5 +94,18 @@ public class AtraccionDAO {
 			System.err.println("Error al actualizar atraccion en BBDD.");
 		}
 	}
+
+	public void eliminarAtraccion(String nombreAtraccion) {
+		String query = "UPDATE atraccion SET borrado = 1 WHERE atraccion.nombre = ?;";
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, nombreAtraccion);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("no se pudo eliminar la atraccion " + nombreAtraccion);
+		}
+	}
 	
 }

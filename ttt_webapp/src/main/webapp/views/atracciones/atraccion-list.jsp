@@ -43,15 +43,16 @@
 		            </p>
 	            </c:otherwise>
 	        </c:choose>
-	            
-            <c:if test="${flash != null}">
+
+        </div>
+        
+        <c:if test="${flash != null}">
 				<div class="alert alert-danger">
 					<p>
 						<c:out value="${flash}" />						
 					</p>
 				</div>
-			</c:if>
-        </div>
+		</c:if>
 
         <div class="container text-center">
 			<div class="row">

@@ -2,12 +2,12 @@ package controller.admin;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import persistence.AtraccionDAO;
 import service.ProductoService;
 
 @WebServlet("/admin/borrar-atraccion.ad")
@@ -24,11 +24,11 @@ public class BorrarAtraccionServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nombreAtraccion = req.getParameter("nombreAtraccion");
-		
-		productoService.eliminarAtraccion(nombreAtraccion);
-		
-		resp.sendRedirect("/ttt_webapp/login");
-		
+		String nombreAtraccion = req.getParameter("nombreAtraccion");		
+		productoService.eliminarAtraccion(nombreAtraccion);		
+		req.setAttribute("flash", nombreAtraccion + " fue eliminada correctamente.");
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/views/admin/productos-list-admin.jsp");
+		dispatcher.forward(req, resp);
 	}
 }
