@@ -93,5 +93,39 @@ public class PromocionDAO {
 			aDAO.update(unaAtraccion);
 		}
 	}
+
+	public void eliminarEnCascada(String nombreAtraccion) {
+		AtraccionDAO aDAO = new AtraccionDAO();
+		Atraccion atraccionBorrada = null;
+		try {
+			atraccionBorrada = aDAO.obtenerAtraccionPorNombre(nombreAtraccion);
+		} catch (SQLException e) {
+			System.err.println("No se pudo obtener la atraccion " + nombreAtraccion);
+		}
+		
+		String queryEncontrarPromoQueContiene = "SELECT atraccion_promocion.promocion_id from atraccion_promocion WHERE atraccion_promocion.atraccion_id = ?";
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(queryEncontrarPromoQueContiene);
+			statement.setInt(1, atraccionBorrada.getId());
+			ResultSet resultado = statement.executeQuery();
+			while (resultado.next()) {
+				this.eliminarPromocion(resultado.getInt(1));
+			}
+		} catch (Exception e) {
+			System.err.println("No se pudo actualizar las promociones que contienen la Aracción " + nombreAtraccion);
+		}
+		
+	}
+	
+	public void eliminarPromocion(int promoId) throws SQLException {
+		String sql = "UPDATE promocion SET borrado = 1 WHERE promocion.id = ?;";
+		
+		Connection conn = ProveedorDeConeccion.getConeccion();
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, promoId);
+		statement.executeUpdate();
+	}
 	
 }

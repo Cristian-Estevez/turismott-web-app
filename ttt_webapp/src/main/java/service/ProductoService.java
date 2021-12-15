@@ -200,6 +200,7 @@ public class ProductoService {
 
 	public void eliminarAtraccion(String nombreAtraccion) {
 		aDAO.eliminarAtraccion(nombreAtraccion);
+		pDAO.eliminarEnCascada(nombreAtraccion);
 		
 	}
 

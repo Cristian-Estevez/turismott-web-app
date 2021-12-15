@@ -83,7 +83,7 @@ public class AtraccionDAO {
 		String query = "UPDATE atraccion SET cupo = ? WHERE atraccion.id = ?";
 		String cupo = Integer.toString(atraccion.getLugaresDisponibles());
 		String idAtraccion = Integer.toString(atraccion.getId());
-		
+				
 		try {
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(query);
@@ -106,6 +106,23 @@ public class AtraccionDAO {
 		} catch (Exception e) {
 			System.err.println("no se pudo eliminar la atraccion " + nombreAtraccion);
 		}
+		
+		// TODO generar modo CASCADE para eliminacion de promocion que contiene la atracción o hacerlo desde el service mejor
+	}
+
+	public Atraccion obtenerAtraccionPorNombre(String nombreAtraccion) throws SQLException {
+		String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen, atraccion.borrado FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo WHERE atraccion.nombre = ?;";
+		ResultSet resultado = null;
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, nombreAtraccion);
+			resultado = statement.executeQuery();
+		} catch (Exception e) {
+			System.err.println("No se pudo obtener la atraccion " + nombreAtraccion);
+		}
+		
+		return this.instanciarAtraccion(resultado);
 	}
 	
 }
