@@ -19,11 +19,11 @@ public class PromocionAbsolutaTest {
 
 	@Before
 	public void setup() {
-		eowyn = new Usuario(1,"Eowyn", 10, 8, TipoDeAtraccion.AVENTURA, false);
-		gandalf = new Usuario(2,"Gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false);
-		sam = new Usuario(3,"Sam", 36, 8, TipoDeAtraccion.DEGUSTACION, false);
-		galadriel = new Usuario(4,"Galadriel", 120, 4, TipoDeAtraccion.PAISAJE, false);
-		userAdineradoYConMuchoTiempo = new Usuario(0,"Adinerado y con tiempo", 500, 24, TipoDeAtraccion.AVENTURA, false);
+		eowyn = new Usuario(1,"Eowyn", 10, 8, TipoDeAtraccion.AVENTURA, false, false);
+		gandalf = new Usuario(2,"Gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false, false);
+		sam = new Usuario(3,"Sam", 36, 8, TipoDeAtraccion.DEGUSTACION, false, false);
+		galadriel = new Usuario(4,"Galadriel", 120, 4, TipoDeAtraccion.PAISAJE, false, false);
+		userAdineradoYConMuchoTiempo = new Usuario(0,"Adinerado y con tiempo", 500, 24, TipoDeAtraccion.AVENTURA, false, false);
 		
 		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null, false);
 		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null, false);

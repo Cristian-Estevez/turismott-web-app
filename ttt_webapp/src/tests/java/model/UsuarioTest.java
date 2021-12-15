@@ -18,8 +18,8 @@ public class UsuarioTest {
 	
 	@Before
 	public void setup() {
-		gandalf = new Usuario(1, "gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false);
-		userAdineradoYconMuchoTiempo = new Usuario(2, "Ricky Fort", 1000, 5000, TipoDeAtraccion.PAISAJE, false);
+		gandalf = new Usuario(1, "gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false, false);
+		userAdineradoYconMuchoTiempo = new Usuario(2, "Ricky Fort", 1000, 5000, TipoDeAtraccion.PAISAJE, false, false);
 		
 		mordor = new Atraccion(1, "Mordor", 25, 3, 4, TipoDeAtraccion.AVENTURA, "Un lugar para aventurarse", "urlDeUnaFoto", false);
 		moria = new Atraccion(1, "Moria", 10, 2, 6,  TipoDeAtraccion.AVENTURA, "Aventuras en moria", "urlImg", false);
