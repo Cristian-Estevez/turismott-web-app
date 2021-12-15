@@ -32,13 +32,26 @@ public class ProductoService {
 		
 		this.cargarItinerario(usuario, atracciones, promociones);
 		
-		ArrayList<Producto> productosParaOfertar = new ArrayList<Producto>();
+		ArrayList<Producto> productosSinBorrar = this.quitarBorrados(productos);
 		
-		productosParaOfertar = this.quitarYaComprados(productos, usuario);
-		
+		ArrayList<Producto> productosParaOfertar = this.quitarYaComprados(productosSinBorrar, usuario);
+	
 		productosParaOfertar.sort(new ProductosPorPreferencia(usuario.getTipoAtraccionFavorita()));
 		
 		return productosParaOfertar;
+	}
+
+	private ArrayList<Producto> quitarBorrados(ArrayList<Producto> productos) {
+		ArrayList<Producto> todosLosProductos = productos;
+		ArrayList<Producto> productosSinBorrar = new ArrayList<Producto>(productos);
+		
+		for (Producto unProducto : todosLosProductos) {
+			if (unProducto.borrado()) {
+				productosSinBorrar.remove(unProducto);
+			}
+		}
+		
+		return productosSinBorrar;
 	}
 
 	public ArrayList<Producto> getAll() {
