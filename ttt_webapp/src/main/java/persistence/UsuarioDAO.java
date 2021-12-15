@@ -86,7 +86,7 @@ public class UsuarioDAO {
 		String query = "SELECT usuario.id, usuario.nombre, usuario.cantidad_monedas, usuario.tiempo, tipo_atraccion.nombre, usuario.es_admin, usuario.borrado FROM usuario JOIN tipo_atraccion ON tipo_atraccion.id = usuario.tipo_atraccion_favorita";
 
 		ArrayList<Usuario> todosLosUsuarios = new ArrayList<Usuario>();
-		
+
 		Connection conn;
 		try {
 			conn = ProveedorDeConeccion.getConeccion();
@@ -94,14 +94,42 @@ public class UsuarioDAO {
 			PreparedStatement statement = conn.prepareStatement(query);
 			ResultSet resultado = statement.executeQuery();
 
-			while (resultado.next() && !resultado.getBoolean(7)) {
+			while (resultado.next()) {
 				todosLosUsuarios.add(this.instanciarUsuario(resultado));
 			}
 		} catch (SQLException e) {
 			System.err.println("No se pudieron obtener lso usuarios de la base de datos.");
 		}
 		
-		return todosLosUsuarios;
+		ArrayList<Usuario> usuariosNoBorrados = this.quitarLosBorrados(todosLosUsuarios);
+
+		return usuariosNoBorrados;
+	}
+
+	private ArrayList<Usuario> quitarLosBorrados(ArrayList<Usuario> todosLosUsuarios) {
+		ArrayList<Usuario> usuariosNoBorrados = new ArrayList<Usuario>();
+		
+		for (Usuario unUsuario : todosLosUsuarios) {
+			if (!unUsuario.borrado()) {
+				usuariosNoBorrados.add(unUsuario);
+			}
+		}
+		
+		return usuariosNoBorrados;
+	}
+
+	public void eliminarUsuario(Usuario tmp_usuario) {
+		String sql = "UPDATE usuario SET borrado = 1 WHERE usuario.id = ?;";
+
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, tmp_usuario.getId());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println("No se pudo eliminar al usuario " + tmp_usuario.getNombre());
+		}
+
 	}
 
 }

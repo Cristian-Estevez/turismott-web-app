@@ -137,4 +137,8 @@ public class Usuario {
 
 	public void setTipoAtraccionFavorita(TipoDeAtraccion tipoDeAtraccionFavorita) { this.tipoAtraccionFavorita = tipoDeAtraccionFavorita; }
 
+	public boolean borrado() {
+		return borrado;
+	}
+
 }
