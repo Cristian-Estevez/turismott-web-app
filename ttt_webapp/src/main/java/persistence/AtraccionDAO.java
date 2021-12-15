@@ -61,7 +61,7 @@ public class AtraccionDAO {
 		}		
 	}
 	
-	private int getTipoDeAtraccionId(TipoDeAtraccion tipoDeAtraccion) {
+	public int getTipoDeAtraccionId(TipoDeAtraccion tipoDeAtraccion) {
 		String query = "SELECT tipo_atraccion.id FROM tipo_atraccion WHERE tipo_atraccion.nombre = ?;";
 		int index = -1;
 		try {

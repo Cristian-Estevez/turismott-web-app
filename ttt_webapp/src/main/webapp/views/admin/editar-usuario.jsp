@@ -18,7 +18,7 @@
     		<h2 id="titulo" class="es-logo my-5">Crear / Editar Atracción</h2>
     	
     		<div id="contenedor-form" class="container my-5 text-center p-5">
-		    	<form class="row m-2 pb-2" action="/ttt_webapp/admin/crear-atraccion.ad" method="post">
+		    	<form class="row m-2 pb-2" action="/ttt_webapp/admin/editar-usuario.ad" method="post">
 					<jsp:include page="/partials/usuario-form.jsp"></jsp:include>
 				</form>
 			</div>

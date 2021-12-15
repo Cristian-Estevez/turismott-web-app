@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Usuario {
@@ -15,6 +17,7 @@ public class Usuario {
 	private boolean esAdmin;
 	private int cantProductosCompradosPreviamente = 0;
 	private boolean borrado;
+	private HashMap<String, String> errores;
 
 	
 	public Usuario(int usuarioId, String nombre, double monedasDeOro, double tiempoDisponible,
@@ -88,6 +91,24 @@ public class Usuario {
 		this.productos.add(producto);
 	}
 	
+	public Map<String, String> getErrores() {
+		return errores;
+	}
+	
+	public void validar() {
+		errores = new HashMap<String, String>();
+
+		if (this.getMonedasDeOro() < 0) {
+			errores.put("monedasDeOro", "No debe ser negativo");
+		}
+		if (this.getTiempoDisponible() < 0) {
+			errores.put("tiempoDisponible", "No debe ser negativo");
+		}
+		if (this.getTipoAtraccionFavorita() == null) {
+			errores.put("tipoDeAtraccion", "Este campo no debe ser nulo");
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(esAdmin, monedasDeOro, nombre, productos, tiempoDisponible, tipoAtraccionFavorita,
@@ -109,5 +130,11 @@ public class Usuario {
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
 				&& tipoAtraccionFavorita == other.tipoAtraccionFavorita && usuarioId == other.usuarioId;
 	}
+
+	public void setMonedasDeOro(double monedasDeOro) { this.monedasDeOro = monedasDeOro; }
+
+	public void setTiempoDisponible(double tiempoDisponible) { this.tiempoDisponible = tiempoDisponible; }
+
+	public void setTipoAtraccionFavorita(TipoDeAtraccion tipoDeAtraccionFavorita) { this.tipoAtraccionFavorita = tipoDeAtraccionFavorita; }
 
 }
