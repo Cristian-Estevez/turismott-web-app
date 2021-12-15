@@ -15,12 +15,12 @@ import model.TipoDeAtraccion;
 import model.Usuario;
 import service.UsuarioService;
 
-@WebServlet("/admin/editar-usuario.ad")
-public class EditarUsuario extends HttpServlet {
+@WebServlet("/admin/crear-usuario.ad")
+public class CrearUsuario extends HttpServlet {
 
-	private static final long serialVersionUID = -1868880506015598800L;
+	private static final long serialVersionUID = 112783182512424247L;
 	private UsuarioService usuarioService;
-
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -29,14 +29,9 @@ public class EditarUsuario extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		Usuario tmp_usuario = usuarioService.getUsuarioPorNombre(req.getParameter("usuarioCliente"));
-		req.setAttribute("tmp_usuario", tmp_usuario);
-		
 		List<TipoDeAtraccion> tiposDeAtraccion = Arrays.asList(TipoDeAtraccion.values());
 		req.getSession().setAttribute("tiposDeAtraccion", tiposDeAtraccion);
-
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/admin/editar-usuario.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/admin/crear-usuario.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
@@ -46,10 +41,10 @@ public class EditarUsuario extends HttpServlet {
 		double monedasDeOro = Double.parseDouble(req.getParameter("monedasDeOro"));
 		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		TipoDeAtraccion tipoDeAtraccionFavorita = TipoDeAtraccion.valueOf(req.getParameter("tipoDeAtraccion"));
+				
+		usuarioService.crearUsuario(nombre, monedasDeOro, tiempoDisponible, tipoDeAtraccionFavorita);
 		
-		usuarioService.actualizarUsuario(nombre, monedasDeOro, tiempoDisponible, tipoDeAtraccionFavorita);
-		
-		req.setAttribute("flash", "El usuario " + nombre + " se actualizó correctamente.");
+		req.setAttribute("flash", "El usuario " + nombre + " se creó correctamente.");
 		ArrayList<Usuario> usuariosNoEliminados = usuarioService.getAllNonDeleted(); 
 		req.getSession().setAttribute("todosLosUsuarios", usuariosNoEliminados);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/admin/usuarios-list-admin.jsp");
