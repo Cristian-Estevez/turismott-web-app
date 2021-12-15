@@ -132,4 +132,25 @@ public class UsuarioDAO {
 
 	}
 
+	public void crearUsuario(String nombre, double monedasDeOro, double tiempoDisponible,
+			TipoDeAtraccion tipoDeAtraccionFavorita) {
+		String sql = "INSERT INTO usuario (tipo_atraccion_favorita, nombre, tiempo, cantidad_monedas) VALUES (?, ?, ?, ?);";
+		
+		AtraccionDAO aDAO = new AtraccionDAO();
+		int indiceTipoDeAtraccion = aDAO.getTipoDeAtraccionId(tipoDeAtraccionFavorita);
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, indiceTipoDeAtraccion);
+			statement.setString(2, nombre);
+			statement.setDouble(3, tiempoDisponible);
+			statement.setDouble(4, monedasDeOro);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println("No se pudo crear al usuario " + nombre);
+		}
+		
+	}
+
 }

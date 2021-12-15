@@ -1,25 +1,22 @@
 package service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.TipoDeAtraccion;
 import model.Usuario;
 import persistence.UsuarioDAO;
-import persistence.commons.ProveedorDeConeccion;
 
 public class UsuarioService {
+	
+	private UsuarioDAO uDAO = new UsuarioDAO();
 
 	public Usuario getUsuarioPorNombre(String nombre) {
-		UsuarioDAO uDAO = new UsuarioDAO();
+		
 		Usuario usuario = uDAO.encontrarUsuarioPorNombre(nombre);
 		return usuario;
 	}
 
 	public ArrayList<Usuario> getAllNonDeleted() {
-		UsuarioDAO uDAO = new UsuarioDAO();
 		return uDAO.getAllNonDeleted();
 	}
 
@@ -31,12 +28,15 @@ public class UsuarioService {
 		usuarioAEditar.setTiempoDisponible(tiempoDisponible);
 		usuarioAEditar.setTipoAtraccionFavorita(tipoDeAtraccionFavorita);
 		
-		UsuarioDAO uDAO = new UsuarioDAO();
 		uDAO.actualizarUsuario(usuarioAEditar);
 	}
 
 	public void eliminarUsuario(Usuario tmp_usuario) {
-		UsuarioDAO uDAO = new UsuarioDAO();
 		uDAO.eliminarUsuario(tmp_usuario);
+	}
+
+	public void crearUsuario(String nombre, double monedasDeOro, double tiempoDisponible,
+			TipoDeAtraccion tipoDeAtraccionFavorita) {		
+		uDAO.crearUsuario(nombre, monedasDeOro, tiempoDisponible, tipoDeAtraccionFavorita);		
 	}
 }

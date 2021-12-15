@@ -55,7 +55,21 @@
                     </tbody>
                 </table>
             </div>            
-        </div>		
+        </div>
+        <div id="contenedor-form" class="container my-5 text-center p-5">			
+			<form class="row m-2 pb-2" action="/ttt_webapp/admin/crear-usuario.ad">
+				<div class="col">
+					<button type="submit" 
+						class="form-control btn btn-success border border-dark">Crear Usuario</button>
+				</div>						
+			</form>
+			<form class="row m-2 pt-2" >
+				<div class="col">				
+					<button type="submit" onclick="window.history.go(-1); return false;"
+						class="form-control btn btn-success border border-dark">Volver</button>
+				</div>
+			</form>
+		</div>
 	</main>
 	<footer>
         <jsp:include page="/partials/footer.jsp"></jsp:include>
