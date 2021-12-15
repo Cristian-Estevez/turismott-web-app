@@ -94,14 +94,28 @@ public class UsuarioDAO {
 			PreparedStatement statement = conn.prepareStatement(query);
 			ResultSet resultado = statement.executeQuery();
 
-			while (resultado.next() && !resultado.getBoolean(7)) {
+			while (resultado.next()) {
 				todosLosUsuarios.add(this.instanciarUsuario(resultado));
 			}
 		} catch (SQLException e) {
 			System.err.println("No se pudieron obtener lso usuarios de la base de datos.");
 		}
+		
+		ArrayList<Usuario> usuariosNoBorrados = this.quitarLosBorrados(todosLosUsuarios);
 
-		return todosLosUsuarios;
+		return usuariosNoBorrados;
+	}
+
+	private ArrayList<Usuario> quitarLosBorrados(ArrayList<Usuario> todosLosUsuarios) {
+		ArrayList<Usuario> usuariosNoBorrados = new ArrayList<Usuario>();
+		
+		for (Usuario unUsuario : todosLosUsuarios) {
+			if (!unUsuario.borrado()) {
+				usuariosNoBorrados.add(unUsuario);
+			}
+		}
+		
+		return usuariosNoBorrados;
 	}
 
 	public void eliminarUsuario(Usuario tmp_usuario) {
