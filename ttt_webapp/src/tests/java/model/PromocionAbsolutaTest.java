@@ -25,14 +25,14 @@ public class PromocionAbsolutaTest {
 		galadriel = new Usuario(4,"Galadriel", 120, 4, TipoDeAtraccion.PAISAJE, false);
 		userAdineradoYConMuchoTiempo = new Usuario(0,"Adinerado y con tiempo", 500, 24, TipoDeAtraccion.AVENTURA, false);
 		
-		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null);
-		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null);
+		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null, false);
 		
 		listaDeAtraccionesA = new ArrayList<Atraccion>();
 		listaDeAtraccionesA.add(laComarca);
 		listaDeAtraccionesA.add(lothlorien);
 		
-		packDegustacion = new PromocionAbsoluta(6,"Pack Degustación", 36, TipoDeAtraccion.DEGUSTACION, "Una Promo de Degustacion", "urlImagen", listaDeAtraccionesA);
+		packDegustacion = new PromocionAbsoluta(6,"Pack Degustación", 36, TipoDeAtraccion.DEGUSTACION, "Una Promo de Degustacion", "urlImagen", listaDeAtraccionesA, false);
 	}
 	
 	@Test

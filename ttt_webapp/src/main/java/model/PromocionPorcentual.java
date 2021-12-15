@@ -6,8 +6,8 @@ public class PromocionPorcentual extends Promocion {
 
 	public PromocionPorcentual(int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion,
 			double porcentajeDescuento,	String descripcion, String urlImagen, 
-			List<Atraccion> atraccionesIncluidas) {
-		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, atraccionesIncluidas);
+			List<Atraccion> atraccionesIncluidas, boolean borrado) {
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, atraccionesIncluidas, borrado);
 		this.setCosto(porcentajeDescuento);		
 	}
 	

@@ -45,7 +45,8 @@
 		<div class="container-fluid text-center">
 			<h2 class="es-logo my-5"> Esta promo contiene las siguientes atracciones: </h2>
 		</div>
-		<div class="container text-center">
+
+    <div class="container text-center">   
             <div class="row">
 				<c:forEach items="${ atraccionesDeEstaPromocion }" var="producto">
 					<div class="col-lg-4 col-md-6 mb-4">
@@ -74,7 +75,7 @@
 			<form class="row m-2 pb-2">
 				<c:choose>
 					<c:when
-						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar()}">
+						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar() && !usuario.yaCompro(producto)}">
 						<a href="/ttt_webapp/atracciones/comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
 							class="btn btn-success rounded" role="button">Comprar</a>
 					</c:when>

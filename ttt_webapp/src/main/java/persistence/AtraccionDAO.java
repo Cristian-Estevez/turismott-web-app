@@ -16,7 +16,7 @@ public class AtraccionDAO {
 		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 		
 		try {
-			String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo;";
+			String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen, atraccion.borrado FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo;";
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet  resultado = statement.executeQuery();
@@ -34,7 +34,7 @@ public class AtraccionDAO {
 	private Atraccion instanciarAtraccion(ResultSet infoAtraccion) throws SQLException {
 		return new Atraccion(infoAtraccion.getInt(1), infoAtraccion.getString(2), infoAtraccion.getDouble(3), 
 				infoAtraccion.getDouble(4), infoAtraccion.getInt(5), TipoDeAtraccion.valueOf(infoAtraccion.getString(6)), 
-				infoAtraccion.getString(7), infoAtraccion.getString(8));
+				infoAtraccion.getString(7), infoAtraccion.getString(8), infoAtraccion.getBoolean(9));
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class AtraccionDAO {
 		String query = "UPDATE atraccion SET cupo = ? WHERE atraccion.id = ?";
 		String cupo = Integer.toString(atraccion.getLugaresDisponibles());
 		String idAtraccion = Integer.toString(atraccion.getId());
-		
+				
 		try {
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(query);
@@ -93,6 +93,36 @@ public class AtraccionDAO {
 		} catch (Exception e) {
 			System.err.println("Error al actualizar atraccion en BBDD.");
 		}
+	}
+
+	public void eliminarAtraccion(String nombreAtraccion) {
+		String query = "UPDATE atraccion SET borrado = 1 WHERE atraccion.nombre = ?;";
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, nombreAtraccion);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("no se pudo eliminar la atraccion " + nombreAtraccion);
+		}
+		
+		// TODO generar modo CASCADE para eliminacion de promocion que contiene la atracción o hacerlo desde el service mejor
+	}
+
+	public Atraccion obtenerAtraccionPorNombre(String nombreAtraccion) throws SQLException {
+		String sql = "SELECT atraccion.id, atraccion.nombre, atraccion.costo, atraccion.duracion, atraccion.cupo, tipo_atraccion.nombre as TipoDeAtraccion, atraccion.descripcion, atraccion.url_imagen, atraccion.borrado FROM atraccion JOIN tipo_atraccion ON tipo_atraccion.id = atraccion.tipo WHERE atraccion.nombre = ?;";
+		ResultSet resultado = null;
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, nombreAtraccion);
+			resultado = statement.executeQuery();
+		} catch (Exception e) {
+			System.err.println("No se pudo obtener la atraccion " + nombreAtraccion);
+		}
+		
+		return this.instanciarAtraccion(resultado);
 	}
 	
 }

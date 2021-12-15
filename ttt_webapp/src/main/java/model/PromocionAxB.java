@@ -12,8 +12,8 @@ public class PromocionAxB extends Promocion {
 	 * @param nombre
 	 */
 	public PromocionAxB(int numeroId, String nombre, TipoDeAtraccion tipoDeAtraccion,
-			String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas) {
-		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, atraccionesIncluidas);
+			String descripcion, String urlImagen, List<Atraccion> atraccionesIncluidas, boolean borrado) {
+		super(numeroId, nombre, tipoDeAtraccion, descripcion, urlImagen, atraccionesIncluidas, borrado);
 		this.setCosto();
 	}
 	

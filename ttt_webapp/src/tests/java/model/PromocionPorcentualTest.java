@@ -18,12 +18,12 @@ public class PromocionPorcentualTest {
 	@Before
 	public void setup() {
 		
-		minasDeTirith = new Atraccion(2, "Minas de Tirith", 5, 2.5, 25, TipoDeAtraccion.PAISAJE, null, null);
-		abismoDeHelm = new Atraccion(5, "Abismo de Helm", 5, 2, 15, TipoDeAtraccion.PAISAJE, null, null);
-		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null);
-		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null);
-		delicatessen = new Atraccion(0, "Una con poco cupo", 3, 1, 2, TipoDeAtraccion.DEGUSTACION, null, null);
-		cataratasDeChocolate = new Atraccion(0, "Cataratas de Chocolate", 13, 3, 10, TipoDeAtraccion.DEGUSTACION, null, null);
+		minasDeTirith = new Atraccion(2, "Minas de Tirith", 5, 2.5, 25, TipoDeAtraccion.PAISAJE, null, null, false);
+		abismoDeHelm = new Atraccion(5, "Abismo de Helm", 5, 2, 15, TipoDeAtraccion.PAISAJE, null, null, false);
+		lothlorien = new Atraccion(6, "Lothlórien", 35, 1, 30, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		laComarca = new Atraccion(3, "La Comarca", 3, 6.5, 150, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		delicatessen = new Atraccion(0, "Una con poco cupo", 3, 1, 2, TipoDeAtraccion.DEGUSTACION, null, null, false);
+		cataratasDeChocolate = new Atraccion(0, "Cataratas de Chocolate", 13, 3, 10, TipoDeAtraccion.DEGUSTACION, null, null, false);
 
 
 
@@ -39,9 +39,9 @@ public class PromocionPorcentualTest {
 		
 //		tipo Porcentual: Minas Tirith + Abismo de Helm 20% off = $ 8
 		promoPaisajes = new PromocionPorcentual(1,"Promo Paisajes", TipoDeAtraccion.PAISAJE, 20,
-				null, null, listaDeAtraccionesA);
+				null, null, listaDeAtraccionesA, false);
 		
-		promoDegustacion = new PromocionPorcentual(2,"Promo Degustacion", TipoDeAtraccion.DEGUSTACION, 50, null, null, listaDeAtraccionesB);
+		promoDegustacion = new PromocionPorcentual(2,"Promo Degustacion", TipoDeAtraccion.DEGUSTACION, 50, null, null, listaDeAtraccionesB, false);
 	}
 	
 	@Test

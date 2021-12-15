@@ -189,12 +189,32 @@ public class ProductoService {
 	
 	public Atraccion crearAtraccion(String nombre, double costo, double tiempoDeDuracion,
 			int cupo, TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen) {
+		boolean borradoDefault = false;
 		Atraccion atraccion = new Atraccion(-1, nombre, costo, tiempoDeDuracion, cupo, 
-				tipoDeAtraccion, descripcion, urlImagen);
+				tipoDeAtraccion, descripcion, urlImagen, borradoDefault);
 		if (atraccion.esValida()) {
 			aDAO.crearAtraccion(atraccion);
 		}		
 		return atraccion;
+	}
+
+	public void eliminarAtraccion(String nombreAtraccion) {
+		aDAO.eliminarAtraccion(nombreAtraccion);
+		pDAO.eliminarEnCascada(nombreAtraccion);
+		
+	}
+
+	public ArrayList<Producto> getAllNonDeleted() {
+		ArrayList<Producto> todosLosProductos = this.getAll(); 
+		ArrayList<Producto> productosNoBorrados = this.getAll();
+		
+		for (Producto unProducto : todosLosProductos) {
+			if (unProducto.borrado()) {
+				productosNoBorrados.remove(unProducto);
+			}
+		}
+			
+		return productosNoBorrados;
 	}
 
 }

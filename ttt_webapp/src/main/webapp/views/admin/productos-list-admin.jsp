@@ -18,6 +18,15 @@
 		<div class="container-fluid text-center">
 			<h2 class="es-logo my-5">Estos son todos los productos del parque</h2>
 		</div>
+		<div class="container">
+			<c:if test="${flash != null}">
+				<div class="alert alert-success text-center">
+					<p>
+						<c:out value="${flash}" />						
+					</p>
+				</div>
+			</c:if>
+		</div>
 		<div class="container text-center">
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover">

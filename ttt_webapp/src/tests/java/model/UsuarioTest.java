@@ -21,9 +21,9 @@ public class UsuarioTest {
 		gandalf = new Usuario(1, "gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false);
 		userAdineradoYconMuchoTiempo = new Usuario(2, "Ricky Fort", 1000, 5000, TipoDeAtraccion.PAISAJE, false);
 		
-		mordor = new Atraccion(1, "Mordor", 25, 3, 4, TipoDeAtraccion.AVENTURA, "Un lugar para aventurarse", "urlDeUnaFoto");
-		moria = new Atraccion(1, "Moria", 10, 2, 6,  TipoDeAtraccion.AVENTURA, "Aventuras en moria", "urlImg");
-		bosqueNegro = new Atraccion(8, "Bosque Negro", 3, 4, 12, TipoDeAtraccion.AVENTURA, "Aventuras en Bosque Negro", "urlImg");
+		mordor = new Atraccion(1, "Mordor", 25, 3, 4, TipoDeAtraccion.AVENTURA, "Un lugar para aventurarse", "urlDeUnaFoto", false);
+		moria = new Atraccion(1, "Moria", 10, 2, 6,  TipoDeAtraccion.AVENTURA, "Aventuras en moria", "urlImg", false);
+		bosqueNegro = new Atraccion(8, "Bosque Negro", 3, 4, 12, TipoDeAtraccion.AVENTURA, "Aventuras en Bosque Negro", "urlImg", false);
 		
 		productosEsperados = new ArrayList<Producto>();
 		
