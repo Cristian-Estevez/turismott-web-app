@@ -33,8 +33,8 @@ public class EditarUsuario extends HttpServlet {
 
 		Usuario tmp_usuario = usuarioService.getUsuarioPorNombre(req.getParameter("usuarioCliente"));
 		req.setAttribute("tmp_usuario", tmp_usuario);
+		
 		List<TipoDeAtraccion> tiposDeAtraccion = Arrays.asList(TipoDeAtraccion.values());
-
 		req.getSession().setAttribute("tiposDeAtraccion", tiposDeAtraccion);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/admin/editar-usuario.jsp");

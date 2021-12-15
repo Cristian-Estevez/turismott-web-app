@@ -48,6 +48,7 @@
 	                            <td><c:out value="${ usuarioCliente.tipoAtraccionFavorita }"></c:out></td>
 	                            <td>
 		                            <a href="/ttt_webapp/admin/editar-usuario.ad?usuarioCliente=${ usuarioCliente.nombre }" class="btn btn-success rounded" role="button">Editar</a>
+		                            <a href="/ttt_webapp/admin/eliminar-usuario.ad?usuarioCliente=${ usuarioCliente.nombre }" class="btn btn-danger rounded" role="button">Eliminar</a>
 	                            </td>	                            
 	                        </tr>
 	                    </c:forEach>
