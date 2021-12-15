@@ -14,10 +14,10 @@ public class AtraccionTest {
 	
 	@Before
 	public void setup() {
-		eowyn = new Usuario(1,"Eowyn", 10, 8, TipoDeAtraccion.AVENTURA, false);
-		gandalf = new Usuario(2,"Gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false);
-		sam = new Usuario(4,"Sam", 36, 8, TipoDeAtraccion.DEGUSTACION, false);
-		galadriel = new Usuario(5,"Galadriel", 120, 4, TipoDeAtraccion.PAISAJE, false);
+		eowyn = new Usuario(1,"Eowyn", 10, 8, TipoDeAtraccion.AVENTURA, false, false);
+		gandalf = new Usuario(2,"Gandalf", 100, 5, TipoDeAtraccion.PAISAJE, false, false);
+		sam = new Usuario(4,"Sam", 36, 8, TipoDeAtraccion.DEGUSTACION, false, false);
+		galadriel = new Usuario(5,"Galadriel", 120, 4, TipoDeAtraccion.PAISAJE, false, false);
 		
 		moria = new Atraccion(1, "Moria", 10, 2, 6,  TipoDeAtraccion.AVENTURA, null, null, false);
 		minasDeTirith = new Atraccion(2, "Minas de Tirith", 5, 2.5, 25, TipoDeAtraccion.PAISAJE, null, null, false);

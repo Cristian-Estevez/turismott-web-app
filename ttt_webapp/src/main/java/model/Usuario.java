@@ -14,16 +14,18 @@ public class Usuario {
 	private List<Producto> productos = new ArrayList<Producto>();
 	private boolean esAdmin;
 	private int cantProductosCompradosPreviamente = 0;
+	private boolean borrado;
 
 	
 	public Usuario(int usuarioId, String nombre, double monedasDeOro, double tiempoDisponible,
-			TipoDeAtraccion tipoAtraccionFavorita, boolean esAdmin) {
+			TipoDeAtraccion tipoAtraccionFavorita, boolean esAdmin, boolean borrado) {
 		this.usuarioId = usuarioId;
 		this.nombre = nombre;
 		this.monedasDeOro = monedasDeOro;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
 		this.esAdmin = esAdmin;
+		this.borrado = borrado;
 	}
 	
 	public void comprarProducto(Producto producto) {

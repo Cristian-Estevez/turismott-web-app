@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Producto;
 import model.TipoDeAtraccion;
@@ -16,20 +17,20 @@ public class UsuarioDAO {
 	public Usuario encontrarUsuarioPorNombre(String nombreUsuario) {
 		Usuario usuario = NullUser.build();
 		try {
-			String sql = "SELECT usuario.id, usuario.nombre, usuario.cantidad_monedas, usuario.tiempo, tipo_atraccion.nombre, usuario.es_admin FROM usuario JOIN tipo_atraccion ON tipo_atraccion.id = usuario.tipo_atraccion_favorita WHERE usuario.nombre = ?";
+			String sql = "SELECT usuario.id, usuario.nombre, usuario.cantidad_monedas, usuario.tiempo, tipo_atraccion.nombre, usuario.es_admin, usuario.borrado FROM usuario JOIN tipo_atraccion ON tipo_atraccion.id = usuario.tipo_atraccion_favorita WHERE usuario.nombre = ?";
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, nombreUsuario.toLowerCase());
 			ResultSet resultado = statement.executeQuery();
 			if (resultado.next()) {
 				usuario = instanciarUsuario(resultado);
-			}						
+			}
 		} catch (Exception e) {
 			System.err.println("No se ha encontrado al usuario " + nombreUsuario + " en BBDD (UsuarioDAO)");
 		}
 		return usuario;
 	}
-	
+
 	public void actualizarUsuario(Usuario usuario) {
 		String nombre = usuario.getNombre();
 		String tiempo = Double.toString(usuario.getTiempoDisponible());
@@ -46,10 +47,11 @@ public class UsuarioDAO {
 			System.err.println("No se pudo actualizar el usuario en BBDD.");
 		}
 	}
-	
+
 	private Usuario instanciarUsuario(ResultSet infoUsuario) throws SQLException {
-		return new Usuario(infoUsuario.getInt(1), infoUsuario.getString(2), infoUsuario.getDouble(3), infoUsuario.getDouble(4),
-				TipoDeAtraccion.valueOf(infoUsuario.getString(5)), infoUsuario.getBoolean(6));
+		return new Usuario(infoUsuario.getInt(1), infoUsuario.getString(2), infoUsuario.getDouble(3),
+				infoUsuario.getDouble(4), TipoDeAtraccion.valueOf(infoUsuario.getString(5)), infoUsuario.getBoolean(6),
+				infoUsuario.getBoolean(7));
 	}
 
 	public void actualizarItinerario(Usuario usuario, Producto producto) {
@@ -75,28 +77,31 @@ public class UsuarioDAO {
 			System.err.println("No se puedo guardar la compra del usuario");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public ArrayList<Usuario> getAllNonDeleted() {
+		String query = "SELECT usuario.id, usuario.nombre, usuario.cantidad_monedas, usuario.tiempo, tipo_atraccion.nombre, usuario.es_admin, usuario.borrado FROM usuario JOIN tipo_atraccion ON tipo_atraccion.id = usuario.tipo_atraccion_favorita";
+
+		ArrayList<Usuario> todosLosUsuarios = new ArrayList<Usuario>();
+		
+		Connection conn;
+		try {
+			conn = ProveedorDeConeccion.getConeccion();
+
+			PreparedStatement statement = conn.prepareStatement(query);
+			ResultSet resultado = statement.executeQuery();
+
+			while (resultado.next() && !resultado.getBoolean(7)) {
+//				Usuario tmp_usuario = new Usuario(resultado.getInt(1), resultado.getString(2), resultado.getDouble(3),
+//						resultado.getDouble(4), TipoDeAtraccion.valueOf(resultado.getString(5)), resultado.getBoolean(6),
+//						resultado.getBoolean(7));
+ 
+				todosLosUsuarios.add(this.instanciarUsuario(resultado));
+			}
+		} catch (SQLException e) {
+			System.err.println("No se pudieron obtener lso usuarios de la base de datos.");
+		}
+		
+		return todosLosUsuarios;
+	}
+
 }
