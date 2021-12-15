@@ -61,16 +61,16 @@
 						<div class="card h-100">
 							<a href="#"><img class="card-img-top " height="300"
 								src="${ producto.urlImagen }" alt=""></a>
-							<div class="card-body">
+							<div class="card-body bg-color-1 ">
 								<h4 class="card-title">
-									<a class="text-decoration-none" href="detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
+									<a class="text-decoration-none txt-color-5 " href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }">${ producto.nombre }</a>
 								</h4>
-								<h5>${ producto.costo }</h5>
+								<h5 class=" txt-color-5">${ producto.costo }</h5>
 								<a href="/ttt_webapp/atracciones/detalle-atraccion?nombreProducto=${ producto.nombre }"
 									class="btn btn-success rounded" role="button">Ver</a>
 							</div>
-							<div class="card-footer">
-								<small class="text-muted">${ producto.tipoDeAtraccion }</small>
+							<div class="card-footer bg-color-2">
+								<small class=" txt-color-4">${ producto.tipoDeAtraccion }</small>
 							</div>
 						</div>
 					</div>
