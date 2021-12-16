@@ -230,4 +230,34 @@ public class ProductoService {
 		return productosNoBorrados;
 	}
 
+	public void actualizarAtraccion(int idProducto, String nombre, double costo, double duracion, int cupo,
+			TipoDeAtraccion tipoDeAtraccion, String descripcion, String urlImagen) {
+		Atraccion atraccionAEditar = this.obtenerProductoPorId(idProducto);
+		
+		atraccionAEditar.setNombre(nombre);
+		atraccionAEditar.setCosto(costo);
+		atraccionAEditar.setTiempoDeDuracion(duracion);
+		atraccionAEditar.setCupo(cupo);
+		atraccionAEditar.setTipoDeAtraccion(tipoDeAtraccion);
+		atraccionAEditar.setDescripcion(descripcion);
+		atraccionAEditar.setUrlImagen(urlImagen);
+		
+		aDAO.actualizarAtraccion(atraccionAEditar);
+		
+	}
+
+	public Atraccion obtenerProductoPorId(int idProducto) {
+		ArrayList<Producto> productos = this.getAll();
+
+		Producto productoAObtener = null;
+		
+		for (Producto unProducto : productos) {
+			if(unProducto.getId() == idProducto) {
+				productoAObtener = unProducto;
+			}
+		}
+		
+		return (Atraccion) productoAObtener;
+	}
+
 }
