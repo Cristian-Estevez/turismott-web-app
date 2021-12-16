@@ -83,6 +83,10 @@ public class Atraccion extends Producto {
 		if (tiempoDeDuracion < 0) { errores.put("duracion", "No debe ser menor a 0"); }
 		if (cupo < 0) { errores.put("cupo", "No debe ser menor a 0"); }
 		
-	}
+	}	
 	
+	public void setTiempoDeDuracion(double duracion) { this.tiempoDeDuracion = duracion; }
+
+	public void setCupo(int cupo) { this.cupo = cupo; }
+
 }

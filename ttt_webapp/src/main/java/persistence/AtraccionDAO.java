@@ -124,5 +124,28 @@ public class AtraccionDAO {
 		
 		return this.instanciarAtraccion(resultado);
 	}
+
+	public void actualizarAtraccion(Atraccion atraccionAEditar) {
+		String sql = "UPDATE atraccion SET nombre = ?, costo = ?, cupo = ?, duracion = ?, tipo = ?, descripcion = ?, url_imagen = ? WHERE atraccion.id = ?";
+		
+		int indiceTipoDeAtraccion = this.getTipoDeAtraccionId(atraccionAEditar.getTipoDeAtraccion());
+		
+		try {
+			Connection conn = ProveedorDeConeccion.getConeccion();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, atraccionAEditar.getNombre());
+			statement.setDouble(2, atraccionAEditar.getCosto());
+			statement.setInt(3, atraccionAEditar.getCupo());
+			statement.setDouble(4, atraccionAEditar.getTiempoDeDuracion());
+			statement.setInt(5, indiceTipoDeAtraccion);
+			statement.setString(6, atraccionAEditar.getDescripcion());
+			statement.setString(7, atraccionAEditar.getUrlImagen());
+			statement.setInt(8, atraccionAEditar.getId());
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("No se pudo actualizar la atraccion " + atraccionAEditar.getNombre());
+		}
+		
+	}
 	
 }

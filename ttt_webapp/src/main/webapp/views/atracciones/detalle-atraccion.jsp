@@ -42,14 +42,19 @@
 			</p>
 		</div>
 		
-		<div id="contenedor-form" class="container my-5 text-center p-5">			
+		<div id="contenedor-form" class="container my-5 text-center p-5">
 			<form class="row m-2 pb-2">
+				<c:if test="${usuario.esAdmin() && !producto.esPromocion() }">
+					<a href="/ttt_webapp/admin/editar-atraccion.ad?idProducto=${ producto.id }" class="btn btn-success rounded" role="button">Editar</a>
+				</c:if>
+			</form>		
+			<form class="row m-2 pb-2">
+				
 				<c:choose>
 					<c:when test="${usuario.esAdmin() && !producto.borrado()}">
 						<a href="/ttt_webapp/admin/borrar-atraccion.ad?nombreAtraccion=${producto.nombre}"
 							class="btn btn-danger rounded" role="button">Eliminar</a>
-					</c:when>
-						
+					</c:when>						
 					<c:when
 						test="${usuario.puedeComprar(producto) && usuario.puedeAsistir(producto) && producto.tieneLugar() && !usuario.yaCompro(producto)}">
 						<a href="/ttt_webapp/atracciones/comprar.do?nombreProducto=${producto.nombre}&nombreUsuario=${usuario.nombre}"
@@ -61,11 +66,9 @@
 					</c:otherwise>
 				</c:choose>				
 			</form>
-			<form class="row m-2 pt-2" >
-				<div class="col">				
+			<form class="row m-2 pb-2" >								
 					<button type="submit" onclick="window.history.go(-1); return false;"
-						class="form-control btn btn-success border border-dark">Volver</button>
-				</div>
+						class="form-control btn btn-success border border-dark">Volver</button>				
 			</form>
 		</div>
 		

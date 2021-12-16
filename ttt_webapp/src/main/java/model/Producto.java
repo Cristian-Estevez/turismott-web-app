@@ -50,6 +50,12 @@ public abstract class Producto {
 	public boolean tieneLugar() { return getLugaresDisponibles() > 0; }
 	
 	public String getDescripcion() { return descripcion; }
+	
+	public void setNombre(String nombre) { this.nombre = nombre; }
+
+	public void setTipoDeAtraccion(TipoDeAtraccion tipoDeAtraccion) { this.tipoDeAtraccion = tipoDeAtraccion; }
+
+	public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
 	@Override
 	public int hashCode() {
