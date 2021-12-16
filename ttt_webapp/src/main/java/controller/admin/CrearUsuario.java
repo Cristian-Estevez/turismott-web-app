@@ -37,7 +37,7 @@ public class CrearUsuario extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nombre = req.getParameter("nombre");
+		String nombre = req.getParameter("nombre").toLowerCase();
 		double monedasDeOro = Double.parseDouble(req.getParameter("monedasDeOro"));
 		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		TipoDeAtraccion tipoDeAtraccionFavorita = TipoDeAtraccion.valueOf(req.getParameter("tipoDeAtraccion"));

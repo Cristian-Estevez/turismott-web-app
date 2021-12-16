@@ -124,6 +124,7 @@ public class UsuarioDAO {
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, tmp_usuario.getId());
+			
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println("No se pudo eliminar al usuario " + tmp_usuario.getNombre());
