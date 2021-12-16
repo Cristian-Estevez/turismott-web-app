@@ -48,7 +48,7 @@ public class Usuario {
 	
 	public boolean yaCompro(Producto otroProducto) {
 		for (Producto unProducto : productos) {
-			if (unProducto.incluye(otroProducto)) {
+			if (unProducto.incluye(otroProducto) || unProducto == otroProducto) {
 				return true;
 			}
 		}
