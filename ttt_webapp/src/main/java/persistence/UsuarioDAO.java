@@ -33,17 +33,16 @@ public class UsuarioDAO {
 
 	public void actualizarUsuario(Usuario usuario) {
 		String nombre = usuario.getNombre();
-		String tiempo = Double.toString(usuario.getTiempoDisponible());
-		String cantidad_monedas = Double.toString(usuario.getMonedasDeOro());
-
+		double tiempo = usuario.getTiempoDisponible();
+		double cantidad_monedas = usuario.getMonedasDeOro();
 		AtraccionDAO aDAO = new AtraccionDAO();
 		int indiceTipoDeAtraccion = aDAO.getTipoDeAtraccionId(usuario.getTipoAtraccionFavorita());
 		try {
 			String sql = "UPDATE usuario SET tiempo = ?, cantidad_monedas = ?, tipo_atraccion_favorita = ? WHERE usuario.nombre = ?;";
 			Connection conn = ProveedorDeConeccion.getConeccion();
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, tiempo);
-			statement.setString(2, cantidad_monedas);
+			statement.setDouble(1, tiempo);
+			statement.setDouble(2, cantidad_monedas);
 			statement.setInt(3, indiceTipoDeAtraccion);
 			statement.setString(4, nombre);
 			statement.executeUpdate();
