@@ -74,6 +74,13 @@
 					</p>
 				</div>
 			</c:if>
+			<c:if test="${despedida != null}">
+				<div class="alert alert-success">
+					<p>
+						<c:out value="${despedida}" />
+					</p>
+				</div>
+			</c:if>
 			<form class="row m-2 pb-2" action="login" method="post">
 				<div class="col">
 					<input type="text" class="form-control" name="nombreUsuario" placeholder="Ingresa tu nombre">
